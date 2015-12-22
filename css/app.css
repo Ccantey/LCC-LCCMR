@@ -5,6 +5,7 @@
 /* Move down content because we have a fixed navbar that is 50px tall */
 body {
   /*padding-top: 50px;*/
+  font-family: 'Open Sans', sans-serif;
 }
 #logo{
 	position:absolute;
@@ -72,16 +73,27 @@ body {
 	text-align:center;
 	padding:17px 0;
 	font-size:18px;
+	font-weight: bold;
 }
 /* search tab*/
 
-.searchli{
-	
-	padding:4px;
+li.searchli > a{
+	padding: 2px 0;
+	line-height: 125%;
+	height: 100%;
+	/*vertical-align: middle;*/
 }
-.active.searchli{
-	
+.searchli{
+	width:25%;
+	height:34px;
+	text-align: center;
+}
+.active.searchli{	
 	background-color:#51616c;
+}
+
+.active.searchli >a{	
+	color:#fff;
 }
 .searchul{
 	width:100%;
@@ -92,6 +104,52 @@ body {
 }
 .rightline{
 	border-right: 1px solid #727d86;
+}
+.searchform{
+	margin-top: 76px;
+	padding-bottom: 40px;
+	border-bottom: 1px solid #727d86;
+}
+form label{
+	font-weight: normal;
+}
+.form-control{
+	border-radius:0;
+	display:initial;
+	width:80%;
+	padding:0 5px;
+	height:36px;
+	margin-bottom:5px;
+}
+#addressSearchButton{
+	padding:0;
+	border-radius: 0;
+	background-color: #50667f;
+	color:#fff;
+	margin-bottom:3px;
+	margin-left:5px;
+	padding:7px 9px;
+	border-color:#50667f;
+}
+
+select.form-control{
+	background-color:#50667f;
+	color:#fff;
+	width:100%;
+	margin-top:4px;
+}
+.selectform{
+	margin-top:40px;
+	padding-bottom: 40px;
+	border-bottom: 1px solid #727d86;
+}
+#replink{
+	text-align: center;
+	font-style: italic;
+	margin-top: 5px;
+}
+#replink a{
+	color:#50667f;
 }
 
 /* Hide for mobile, show later */
