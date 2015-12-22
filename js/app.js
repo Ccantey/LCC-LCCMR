@@ -75,4 +75,29 @@ function init(){
 
 	// toggleBaseLayers($('#satellitonoffswitch'),vectorBasemap,streetsBasemap);
 
+
+
 };
+
+	  function navTab(id){
+	  	$("#search, #layers, #results, #lccmr").hide();
+        switch(id){
+        	case "search":
+        	    console.log(id);
+                $('#'+id).show();
+        	    break;
+        	case "layers":
+        	    console.log(id);
+        	    $('#'+id).show();
+        	    break;
+        	case "results":
+        	    console.log(id);
+        	    $('#'+id).show();
+        	    break;
+        	case "lccmr":
+        	    console.log(id);
+        	    $('#'+id).show();
+        	    break;
+
+        }
+     }

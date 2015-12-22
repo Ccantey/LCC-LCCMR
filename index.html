@@ -43,11 +43,10 @@
         <div class="row">
         <div id="navtabs">
         	<ul class="nav nav-sidebar">
-            <li class="navlist active">
-            	<a class="navtext" href="#"><i class="fa fa-search fa-lg"></i>Search</a> </a></li>
-            <li class="navlist"><a class="navtext" href="#"><i class="fa fa-map fa-lg"></i>Layers</a></li>
-            <li class="navlist"><a class="navtext" href="#"><i class="fa fa-database fa-lg"></i>Results</a></li>
-            <li class="navlist"><a class="navtext" href="#"><i class="fa fa-home fa-2x"></i>LCCMR</a></li>
+            <li class="navlist active" data-navlist-id="search"><a class="navtext"><i class="fa fa-search fa-lg"></i>Search</a> </a></li>
+            <li class="navlist" data-navlist-id="layers"><a class="navtext"><i class="fa fa-map fa-lg"></i>Layers</a></li>
+            <li class="navlist" data-navlist-id="results"><a class="navtext"><i class="fa fa-database fa-lg"></i>Results</a></li>
+            <li class="navlist" data-navlist-id="lccmr"><a class="navtext"><i class="fa fa-home fa-2x"></i>LCCMR</a></li>
           </ul>
         </div>
         <!------------------------------------------- sidebar ---------------------------------------------->
@@ -56,10 +55,10 @@
           <div id="search">
             <div class="navtitle">Search Projects</div>
 	          <ul class="nav navbar-nav searchul">
-	            <li class="active searchli rightline"><a class="navtext" href="#">Address</a></li>
+	            <li class="active searchli rightline "><a class="navtext" href="#">Address</a></li>
 	            <li class="searchli rightline"><a class="navtext" href="#">Purchase Date</a></li>
-	            <li class="searchli rightline"><a class="navtext" href="#">Owner</a></li>
-	            <li class="searchli"><a class="navtext" href="#">ID</a></li>
+	            <li class="searchli rightline "><a class="navtext" href="#">Owner</a></li>
+	            <li class="searchli "><a class="navtext" href="#">ID</a></li>
 	          </ul>
 	            <div class="searchform">
 					<form>
@@ -72,7 +71,7 @@
 				  <div class="selectform">
 					<form>
 					  <div class="form-group">
-					    <label for="addressSearch">Zoom to:</label>
+					    <label for="addressSearch">Search by:</label>
 					    <select class="form-control">
 						  <option>County</option>
 						  <option>Aitkin</option>
@@ -104,6 +103,22 @@
 				 </div>
 	        </div> <!-- search -->
 
+
+            <div id="layers">
+            	<div class="navtitle">Layers</div>
+            	<ul class="nav navbar-nav layersul">
+	            <li class="active layersli rightline verticlealign"><a class="navtext" href="#">Political</a></li>
+	            <li class="layersli rightline verticlealign"><a class="navtext" href="#">Physical</a></li>
+	            <li class="layersli rightline"><a class="navtext" href="#">Natrual Resources</a></li>
+	            <li class="layersli verticlealign"><a class="navtext" href="#">Basemap</a></li>
+	          </ul>
+            </div>
+            <div id="results">
+            	<div class="navtitle">Results</div>
+            </div>
+            <div id="lccmr">
+            	<div class="navtitle">About LCCMR</div>
+            </div>
 
           <div id="logo">
           	<img src="images/enrtf-logo.png" height="75px"/>
