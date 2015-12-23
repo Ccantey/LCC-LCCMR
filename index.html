@@ -105,17 +105,243 @@
 
 
             <div id="layers">
-            	<div class="navtitle">Layers</div>
+            	<div class="navtitle">Map Layers</div>
             	<ul class="nav navbar-nav layersul">
-	            <li class="active layersli rightline verticlealign"><a class="navtext" href="#">Political</a></li>
-	            <li class="layersli rightline verticlealign"><a class="navtext" href="#">Physical</a></li>
-	            <li class="layersli rightline"><a class="navtext" href="#">Natrual Resources</a></li>
-	            <li class="layersli verticlealign"><a class="navtext" href="#">Basemap</a></li>
+	            <li class="active layersli rightline verticlealign" data-layerlist-id="politicalSwitches"><a class="navtext" href="#">Political</a></li>
+	            <li class="layersli rightline verticlealign" data-layerlist-id="physicalSwitches"><a class="navtext" href="#">Physical</a></li>
+	            <li class="layersli rightline" data-layerlist-id="naturalSwitches"><a class="navtext" href="#">Natrual Resources</a></li>
+	            <li class="layersli verticlealign" data-layerlist-id="basemap"><a class="navtext" href="#">Basemap</a></li>
 	          </ul>
-            </div>
+	          <div id="layerswitches">
+
+	            <div id="politicalSwitches">
+		          <!-- switches -->
+			      <div id="cityLayerdiv"class="onoffswitch">
+			      <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="citylayeronoffswitch" checked>
+				    <!-- <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" checked> -->
+				    <label class="onoffswitch-label" for="citylayeronoffswitch">
+				    <!-- <label class="onoffswitch-label" for="myonoffswitch"> -->
+				        <span class="onoffswitch-inner"></span>
+				        <!-- <span class="onoffswitch-inner"></span> -->
+				        <span class="onoffswitch-switch"></span>
+				        <!-- <span class="onoffswitch-switch"></span> -->
+				    </label>
+				  </div>
+				  <div class='layersswitchLabel'>Municipal Boundaries</div>
+	              <!-- END CITY SWITCH -->
+
+				  <div id="countyLayerdiv"class="onoffswitch">
+			      <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="countylayeronoffswitch" checked>
+				    <!-- <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" checked> -->
+				    <label class="onoffswitch-label" for="countylayeronoffswitch">
+				    <!-- <label class="onoffswitch-label" for="myonoffswitch"> -->
+				        <span class="onoffswitch-inner"></span>
+				        <!-- <span class="onoffswitch-inner"></span> -->
+				        <span class="onoffswitch-switch"></span>
+				        <!-- <span class="onoffswitch-switch"></span> -->
+				    </label>
+				  </div>
+				  <div class='layersswitchLabel'>County Boundaries</div>
+	              <!-- END COUNTY SWITCH -->
+
+	              <div id="houseLayerdiv"class="onoffswitch">
+			      <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="houselayeronoffswitch" checked>
+				    <!-- <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" checked> -->
+				    <label class="onoffswitch-label" for="houselayeronoffswitch">
+				    <!-- <label class="onoffswitch-label" for="myonoffswitch"> -->
+				        <span class="onoffswitch-inner"></span>
+				        <!-- <span class="onoffswitch-inner"></span> -->
+				        <span class="onoffswitch-switch"></span>
+				        <!-- <span class="onoffswitch-switch"></span> -->
+				    </label>
+				  </div>
+				  <div class='layersswitchLabel'>MN House Districts</div>
+	              <!-- END CITY SWITCH -->
+
+				  <div id="senateLayerdiv"class="onoffswitch">
+			      <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="senatelayeronoffswitch" checked>
+				    <!-- <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" checked> -->
+				    <label class="onoffswitch-label" for="senatelayeronoffswitch">
+				    <!-- <label class="onoffswitch-label" for="myonoffswitch"> -->
+				        <span class="onoffswitch-inner"></span>
+				        <!-- <span class="onoffswitch-inner"></span> -->
+				        <span class="onoffswitch-switch"></span>
+				        <!-- <span class="onoffswitch-switch"></span> -->
+				    </label>
+				  </div>
+				  <div class='layersswitchLabel'>MN Senate Districts</div>
+	              <!-- END COUNTY SWITCH -->
+
+	            </div>  <!-- END POLITICAL GROUP -->
+
+
+	            <div id="physicalSwitches">
+		          <!-- switches -->
+			      <div id="snaLayerdiv"class="onoffswitch">
+			      <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="snalayeronoffswitch" checked>
+				    <!-- <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" checked> -->
+				    <label class="onoffswitch-label" for="snalayeronoffswitch">
+				    <!-- <label class="onoffswitch-label" for="myonoffswitch"> -->
+				        <span class="onoffswitch-inner"></span>
+				        <!-- <span class="onoffswitch-inner"></span> -->
+				        <span class="onoffswitch-switch"></span>
+				        <!-- <span class="onoffswitch-switch"></span> -->
+				    </label>
+				  </div>
+				  <div class='layersswitchLabel'>Scientific Natural Areas</div>
+	              <!-- END CITY SWITCH -->
+
+				  <div id="bwcaLayerdiv"class="onoffswitch">
+			      <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="bwcalayeronoffswitch" checked>
+				    <!-- <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" checked> -->
+				    <label class="onoffswitch-label" for="bwcalayeronoffswitch">
+				    <!-- <label class="onoffswitch-label" for="myonoffswitch"> -->
+				        <span class="onoffswitch-inner"></span>
+				        <!-- <span class="onoffswitch-inner"></span> -->
+				        <span class="onoffswitch-switch"></span>
+				        <!-- <span class="onoffswitch-switch"></span> -->
+				    </label>
+				  </div>
+				  <div class='layersswitchLabel'>Boundary Waters Canoe Area</div>
+	              <!-- END COUNTY SWITCH -->
+
+	              <div id="sfLayerdiv"class="onoffswitch">
+			      <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="sflayeronoffswitch" checked>
+				    <!-- <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" checked> -->
+				    <label class="onoffswitch-label" for="sflayeronoffswitch">
+				    <!-- <label class="onoffswitch-label" for="myonoffswitch"> -->
+				        <span class="onoffswitch-inner"></span>
+				        <!-- <span class="onoffswitch-inner"></span> -->
+				        <span class="onoffswitch-switch"></span>
+				        <!-- <span class="onoffswitch-switch"></span> -->
+				    </label>
+				  </div>
+				  <div class='layersswitchLabel'>State Forest</div>
+	              <!-- END CITY SWITCH -->
+
+				  <div id="nfLayerdiv"class="onoffswitch">
+			      <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="nflayeronoffswitch" checked>
+				    <!-- <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" checked> -->
+				    <label class="onoffswitch-label" for="nflayeronoffswitch">
+				    <!-- <label class="onoffswitch-label" for="myonoffswitch"> -->
+				        <span class="onoffswitch-inner"></span>
+				        <!-- <span class="onoffswitch-inner"></span> -->
+				        <span class="onoffswitch-switch"></span>
+				        <!-- <span class="onoffswitch-switch"></span> -->
+				    </label>
+				  </div>
+				  <div class='layersswitchLabel'>National Forest</div>
+	              <!-- END COUNTY SWITCH -->
+
+	            </div>  <!-- END PHYSICAL GROUP -->
+
+
+	            <div id="naturalSwitches">
+		          <!-- switches -->
+			      <div id="wmaLayerdiv"class="onoffswitch">
+			      <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="wmalayeronoffswitch" checked>
+				    <!-- <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" checked> -->
+				    <label class="onoffswitch-label" for="wmalayeronoffswitch">
+				    <!-- <label class="onoffswitch-label" for="myonoffswitch"> -->
+				        <span class="onoffswitch-inner"></span>
+				        <!-- <span class="onoffswitch-inner"></span> -->
+				        <span class="onoffswitch-switch"></span>
+				        <!-- <span class="onoffswitch-switch"></span> -->
+				    </label>
+				  </div>
+				  <div class='layersswitchLabel'>Wildlife Management Areas</div>
+	              <!-- END CITY SWITCH -->
+
+				  <div id="wmdLayerdiv"class="onoffswitch">
+			      <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="wmdlayeronoffswitch" checked>
+				    <!-- <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" checked> -->
+				    <label class="onoffswitch-label" for="wmdlayeronoffswitch">
+				    <!-- <label class="onoffswitch-label" for="myonoffswitch"> -->
+				        <span class="onoffswitch-inner"></span>
+				        <!-- <span class="onoffswitch-inner"></span> -->
+				        <span class="onoffswitch-switch"></span>
+				        <!-- <span class="onoffswitch-switch"></span> -->
+				    </label>
+				  </div>
+				  <div class='layersswitchLabel'>Wetland Management Areas</div>
+	              <!-- END COUNTY SWITCH -->
+
+	              <div id="nwrLayerdiv"class="onoffswitch">
+			      <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="nwrlayeronoffswitch" checked>
+				    <!-- <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" checked> -->
+				    <label class="onoffswitch-label" for="nwrlayeronoffswitch">
+				    <!-- <label class="onoffswitch-label" for="myonoffswitch"> -->
+				        <span class="onoffswitch-inner"></span>
+				        <!-- <span class="onoffswitch-inner"></span> -->
+				        <span class="onoffswitch-switch"></span>
+				        <!-- <span class="onoffswitch-switch"></span> -->
+				    </label>
+				  </div>
+				  <div class='layersswitchLabel'>National Wildlife Refuge</div>
+	              <!-- END CITY SWITCH -->
+
+	            </div>  <!-- END NATURAL GROUP -->
+
+
+
+	            <div id="basemap">
+		          <!-- switches -->
+			      <div id="grayLayerdiv"class="onoffswitch">
+			      <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="graylayeronoffswitch" checked>
+				    <!-- <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" checked> -->
+				    <label class="onoffswitch-label" for="graylayeronoffswitch">
+				    <!-- <label class="onoffswitch-label" for="myonoffswitch"> -->
+				        <span class="onoffswitch-inner"></span>
+				        <!-- <span class="onoffswitch-inner"></span> -->
+				        <span class="onoffswitch-switch"></span>
+				        <!-- <span class="onoffswitch-switch"></span> -->
+				    </label>
+				  </div>
+				  <div class='layersswitchLabel'>Light Gray Basemap</div>
+	              <!-- END CITY SWITCH -->
+
+				  <div id="streetsLayerdiv"class="onoffswitch">
+			      <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="streetslayeronoffswitch" checked>
+				    <!-- <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" checked> -->
+				    <label class="onoffswitch-label" for="streetslayeronoffswitch">
+				    <!-- <label class="onoffswitch-label" for="myonoffswitch"> -->
+				        <span class="onoffswitch-inner"></span>
+				        <!-- <span class="onoffswitch-inner"></span> -->
+				        <span class="onoffswitch-switch"></span>
+				        <!-- <span class="onoffswitch-switch"></span> -->
+				    </label>
+				  </div>
+				  <div class='layersswitchLabel'>Streets Basemap</div>
+	              <!-- END COUNTY SWITCH -->
+
+	              <div id="satLayerdiv"class="onoffswitch">
+			      <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="satlayeronoffswitch" checked>
+				    <!-- <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" checked> -->
+				    <label class="onoffswitch-label" for="satlayeronoffswitch">
+				    <!-- <label class="onoffswitch-label" for="myonoffswitch"> -->
+				        <span class="onoffswitch-inner"></span>
+				        <!-- <span class="onoffswitch-inner"></span> -->
+				        <span class="onoffswitch-switch"></span>
+				        <!-- <span class="onoffswitch-switch"></span> -->
+				    </label>
+				  </div>
+				  <div class='layersswitchLabel'>Satellite Basemap</div>
+	              <!-- END COUNTY SWITCH -->
+
+
+
+
+	          </div>  <!-- END BASEMAP SWITCHES -->
+
+
+             </div>
+            </div> <!-- end layers tab -->
+
+            <!------------------------------------------------------ RESULTS TAB ------------------------------------------>
             <div id="results">
             	<div class="navtitle">Results</div>
             </div>
+            <!------------------------------------------------------ LCCMR TAB ------------------------------------------>
             <div id="lccmr">
             	<div class="navtitle">About LCCMR</div>
             </div>

@@ -88,6 +88,7 @@ function init(){
         	    break;
         	case "layers":
         	    console.log(id);
+        	    $("#physicalSwitches, #naturalSwitches, #basemap").hide();
         	    $('#'+id).show();
         	    break;
         	case "results":
@@ -95,6 +96,28 @@ function init(){
         	    $('#'+id).show();
         	    break;
         	case "lccmr":
+        	    console.log(id);
+        	    $('#'+id).show();
+        	    break;
+
+        }
+     }
+     	  function layerNavTab(id){
+	  	$("#politicalSwitches, #physicalSwitches, #naturalSwitches, #basemap").hide();
+        switch(id){
+        	case "politicalSwitches":
+        	    console.log(id);
+                $('#'+id).show();
+        	    break;
+        	case "physicalSwitches":
+        	    console.log(id);
+        	    $('#'+id).show();
+        	    break;
+        	case "naturalSwitches":
+        	    console.log(id);
+        	    $('#'+id).show();
+        	    break;
+        	case "basemap":
         	    console.log(id);
         	    $('#'+id).show();
         	    break;
