@@ -79,48 +79,48 @@ function init(){
 
 };
 
-	  function navTab(id){
-	  	$("#search, #layers, #results, #lccmr").hide();
-        switch(id){
-        	case "search":
-        	    console.log(id);
-                $('#'+id).show();
-        	    break;
-        	case "layers":
-        	    console.log(id);
-        	    $("#physicalSwitches, #naturalSwitches, #basemap").hide();
-        	    $('#'+id).show();
-        	    break;
-        	case "results":
-        	    console.log(id);
-        	    $('#'+id).show();
-        	    break;
-        	case "lccmr":
-        	    console.log(id);
-        	    $('#'+id).show();
-        	    break;
+	  // function navTab(id){
+	  // 	$("#search, #layers, #results, #lccmr").hide();
+   //      switch(id){
+   //      	case "search":
+   //      	    console.log(id);
+   //              $('#'+id).show();
+   //      	    break;
+   //      	case "layers":
+   //      	    console.log(id);
+   //      	    $('#'+id).show();
+   //      	    break;
+   //      	case "results":
+   //      	    console.log(id);
+   //      	    $('#'+id).show();
+   //      	    break;
+   //      	case "lccmr":
+   //      	    console.log(id);
+   //      	    $('#'+id).show();
+   //      	    break;
 
-        }
-     }
-     	  function layerNavTab(id){
-	  	$("#politicalSwitches, #physicalSwitches, #naturalSwitches, #basemap").hide();
-        switch(id){
-        	case "politicalSwitches":
-        	    console.log(id);
-                $('#'+id).show();
-        	    break;
-        	case "physicalSwitches":
-        	    console.log(id);
-        	    $('#'+id).show();
-        	    break;
-        	case "naturalSwitches":
-        	    console.log(id);
-        	    $('#'+id).show();
-        	    break;
-        	case "basemap":
-        	    console.log(id);
-        	    $('#'+id).show();
-        	    break;
+   //      }
+   //   }
+     
+   //   function layerNavTab(id){
+	  // 	$("#politicalSwitches, #physicalSwitches, #naturalSwitches, #basemap").hide();
+   //      switch(id){
+   //      	case "politicalSwitches":
+   //      	    console.log(id);
+   //              $('#'+id).show();
+   //      	    break;
+   //      	case "physicalSwitches":
+   //      	    console.log(id);
+   //      	    $('#'+id).show();
+   //      	    break;
+   //      	case "naturalSwitches":
+   //      	    console.log(id);
+   //      	    $('#'+id).show();
+   //      	    break;
+   //      	case "basemap":
+   //      	    console.log(id);
+   //      	    $('#'+id).show();
+   //      	    break;
 
-        }
-     }
+   //      }
+   //   }

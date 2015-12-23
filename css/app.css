@@ -20,7 +20,7 @@ body {
 	width:100%;
 }
 .leaflet-left {
-    left: 300px; /*add media querries*/
+    left: 330px; /*add media querries*/
 }
 #navtabs {
     background-color: #393f43;
@@ -177,13 +177,14 @@ select.form-control{
 
 .layersswitchLabel{
     position:   relative;   
-    left: 60px;
+    left: 75px;
     top:37px;
+    font-size: 13px;
 }
 .onoffswitch {
     position: relative; width: 47px;
     -webkit-user-select:none; -moz-user-select:none; -ms-user-select: none;
-    left:0;
+    left:15px;
     top:60px;
 
 }
@@ -229,6 +230,30 @@ select.form-control{
     right: 0px; 
 }
 
+/*RESULTS TAB*/
+thead > tr > th{
+	font-size:11px;
+}
+.table-hover > tbody > tr{
+	color: #7a7a7a;
+	font-size:12px;
+}
+.multipleResultsTable {
+    margin-left: -15px;
+    width: 150px;
+}
+.table > tbody > tr > td, .table > tbody > tr > th, .table > tfoot > tr > td, .table > tfoot > tr > th, .table > thead > tr > td, .table > thead > tr > th {
+    border-bottom: 1px solid #727d86;
+    border-top: 1px solid #727d86;
+    line-height: 1.42857;
+    padding: 8px;
+    vertical-align: top;
+}
+.table-hover > tbody > tr:hover{
+	background-color: #51616c;
+	color:#fff !important;
+	cursor:pointer;
+}
 
 /* Hide for mobile, show later */
 .sidebar {
@@ -238,6 +263,8 @@ select.form-control{
   .sidebar {
   	color:#fff;
     position: fixed;
+    /*added fixed width!*/
+    width:284px;
     top: 0;
     bottom: 0;
     left: 48px;
@@ -261,6 +288,17 @@ select.form-control{
   background-color:#51616c;
   border-left: 4px solid #142736;
   margin-left: -4px;
+}
+
+/*sidebar tab navigation*/
+.nav.navbar-nav.layersul > .active > a,
+.nav.navbar-nav.layersul > .active > a:hover,
+.nav.navbar-nav.layersul > .active > a:focus {
+  color: #fff;
+  background-color:#51616c;
+  outline-color: #51616c;
+/*  border-left: 4px solid #142736;
+  margin-left: -4px;*/
 }
 
 
