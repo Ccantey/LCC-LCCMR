@@ -1,12 +1,11 @@
 //core business logic
-var map, geojson, mapDistrictsLayer, overlayLayerLabels ={},
-	fields = ["district", "name"], switchMap ={},
+var map, LandAcquisitions, switchMap ={},
 	labelarray = [];
 
 //map Layers
 var pushPinMarker, vectorBasemap,streetsBasemap, MinnesotaBoundaryLayer;
 //map overlay layers... called like overlayLayers.CongressionalBoundaryLayer
-var overlayLayers ={};
+
 
 var geocoder = null;
 
@@ -57,15 +56,17 @@ function init(){
 							// console.log(feature)
 							pushPinMarker = L.circleMarker(latlng)
 							                 .on('click', function() { 
+							                 	console.log(this);
+							                 	this.options.color ="red";
 							                 	var html = "";
 							                 	$('#data').html(html);
 												for (prop in feature.properties){
 													if (prop != 'memid'){
-													  html += "<tr><td>" +prop+": "+feature.properties[prop]+"</td></tr>";
+													  html += "<tr><th>" +prop+": </th><td>"+feature.properties[prop]+"</td></tr>";
 													} else {}
 												};
 												//pushPinMarker.bindPopup(html);
-												console.log(html);
+												// /console.log(html);
 										        $('#data').append(html); 
 
 							                 });
@@ -85,6 +86,19 @@ function init(){
 					 //    }
 
 					});	
+
+				     
+
+				}).done(function(e){
+					LandAcquisitions.on('click', function(e){
+						navTab('results', $("li[data-navlist-id='results']"));
+						// LandAcquisitions.eachLayer(function(layer){
+						// 	$(this).removeClass("active");
+						// })
+						this.setStyle({'fillcolor':'green'});
+						//this.setStyle({fillcolor:'red'})
+					});
+
 					var clusters = L.markerClusterGroup({
 							spiderfyOnMaxZoom:false,
 							disableClusteringAtZoom: 16,
@@ -115,9 +129,8 @@ function init(){
 						    }
 
 				     });
-				     clusters.addLayer(LandAcquisitions);
-					 map.addLayer(clusters);
-
+					 clusters.addLayer(LandAcquisitions);
+					 clusters.addTo(map);
 				}); //getJson
 
 
@@ -127,28 +140,31 @@ function init(){
 
 };
 
-	  // function navTab(id){
-	  // 	$("#search, #layers, #results, #lccmr").hide();
-   //      switch(id){
-   //      	case "search":
-   //      	    console.log(id);
-   //              $('#'+id).show();
-   //      	    break;
-   //      	case "layers":
-   //      	    console.log(id);
-   //      	    $('#'+id).show();
-   //      	    break;
-   //      	case "results":
-   //      	    console.log(id);
-   //      	    $('#'+id).show();
-   //      	    break;
-   //      	case "lccmr":
-   //      	    console.log(id);
-   //      	    $('#'+id).show();
-   //      	    break;
+	  function navTab(id, tab){
+	  	console.log( tab)
+	  	$("li.navlist").removeClass("active");
+	  	$( tab ).addClass( "active" );
+	  	$("#search, #layers, #results, #lccmr").hide();
+        switch(id){
+        	case "search":
+        	    // console.log(id);
+                $('#'+id).show();
+        	    break;
+        	case "layers":
+        	    // console.log(id);
+        	    $('#'+id).show();
+        	    break;
+        	case "results":
+        	    // console.log(id);
+        	    $('#'+id).show();
+        	    break;
+        	case "lccmr":
+        	    // console.log(id);
+        	    $('#'+id).show();
+        	    break;
 
-   //      }
-   //   }
+        }
+     }
      
    //   function layerNavTab(id){
 	  // 	$("#politicalSwitches, #physicalSwitches, #naturalSwitches, #basemap").hide();

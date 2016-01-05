@@ -8,12 +8,8 @@ $(function() {
   $("#physicalSwitches, #naturalSwitches, #basemap").hide();
   
   //Gray sidebar navigation
-  $('.navlist').click(function(e){
-  	var id = $(this).data('navlist-id');
-  	$("#search, #layers, #results, #lccmr").hide();
-  	$('#'+id).show();
-    $("li.navlist").removeClass("active");
-  	$( this ).addClass( "active" );
+ $('.navlist').click(function(e){
+  	navTab($(this).data('navlist-id'), this);    
   });
 
   //map layers navigation
