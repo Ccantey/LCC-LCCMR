@@ -14,7 +14,7 @@ $(function() {
   	$('#'+id).show();
     $("li.navlist").removeClass("active");
   	$( this ).addClass( "active" );
-  })
+  });
 
   //map layers navigation
   $('.layersli').click(function(e){
@@ -23,7 +23,9 @@ $(function() {
   	$('#'+id).show();
     $("li.layersli").removeClass("active");
   	$( this ).addClass( "active" );
-  })
+  });
+
+
 
 
 });
