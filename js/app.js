@@ -60,6 +60,7 @@ function init(){
 							                 .on('click', function(e) { 
 							                    LandAcquisitions.eachLayer(function(layer){
 							                    	//console.log(layer.options.icon.options.iconUrl)
+							                    	navTab('results', $("li[data-navlist-id='results']"));
 							                    	if(layer.options.icon.options.iconUrl == "images/selectedpushpin.png"){
 							                    		//console.log(layer.iconUrl);
 							                    		layer.setIcon(deselectedIcon)
