@@ -23,6 +23,26 @@ body {
     left: 330px; /*add media querries*/
 }
 
+.deselected-icon {
+    background: blue;
+    border-radius: 50%;
+    text-align: center;
+    color: white;
+    font-weight: 700;
+    border: 1px solid #ae4b37;
+    font-family: monospace;
+  }
+
+  .selected-icon {
+    background: #ae4b37;
+    border-radius: 50%;
+    text-align: center;
+    color: white;
+    font-weight: 700;
+    border: 1px solid #ae4b37;
+    font-family: monospace;
+  }
+
 /*cluster styling*/
 .cluster {
     background: #ae4b37;

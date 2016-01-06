@@ -53,16 +53,18 @@ function init(){
 					LandAcquisitions = L.geoJson(data, {
 						//style:myStyle,
 						pointToLayer: function(feature, latlng){
-							// console.log(feature)
-							var deselectedIcon = L.icon({iconUrl: 'images/pushpin.png'});
-							var selected = L.icon({iconUrl:'images/selectedpushpin.png'});
+							
+							// var deselectedIcon = L.icon({iconUrl: 'images/pushpin.png'});
+							// var selected = L.icon({iconUrl:'images/selectedpushpin.png'});
+							var deselectedIcon = L.divIcon({className: 'deselected-icon'});
+							var selected = L.divIcon({className: 'selected-icon'});
 							pushPinMarker = L.marker(latlng, {icon:deselectedIcon})
 							                 .on('click', function(e) { 
 							                    LandAcquisitions.eachLayer(function(layer){
-							                    	//console.log(layer.options.icon.options.iconUrl)
+							                    	console.log(layer)
 							                    	navTab('results', $("li[data-navlist-id='results']"));
-							                    	if(layer.options.icon.options.iconUrl == "images/selectedpushpin.png"){
-							                    		//console.log(layer.iconUrl);
+							                    	if(layer.options.icon.options.className == "selected-icon"){
+							                    		console.log("deselected");
 							                    		layer.setIcon(deselectedIcon)
 							                    	}
 							                    })
