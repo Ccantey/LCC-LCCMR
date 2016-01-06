@@ -51,13 +51,23 @@ function init(){
 	$.getJSON("php/getOverlayLayersAsGeoJSON.php", function(data) {
 
 					LandAcquisitions = L.geoJson(data, {
-						// style:myStyle,
+						//style:myStyle,
 						pointToLayer: function(feature, latlng){
 							// console.log(feature)
-							pushPinMarker = L.circleMarker(latlng)
-							                 .on('click', function() { 
-							                 	console.log(this);
-							                 	this.options.color ="red";
+							var deselectedIcon = L.icon({iconUrl: 'images/pushpin.png'});
+							var selected = L.icon({iconUrl:'images/selectedpushpin.png'});
+							pushPinMarker = L.marker(latlng, {icon:deselectedIcon})
+							                 .on('click', function(e) { 
+							                    LandAcquisitions.eachLayer(function(layer){
+							                    	//console.log(layer.options.icon.options.iconUrl)
+							                    	if(layer.options.icon.options.iconUrl == "images/selectedpushpin.png"){
+							                    		//console.log(layer.iconUrl);
+							                    		layer.setIcon(deselectedIcon)
+							                    	}
+							                    })
+							                 	console.log(e.target);
+							                 	e.target.setIcon(selected)
+							                 	// this.options.color ="red";
 							                 	var html = "";
 							                 	$('#data').html(html);
 												for (prop in feature.properties){
@@ -73,31 +83,8 @@ function init(){
 						    return pushPinMarker;
 
 						}
-						// ,
-						// onEachFeature: function (feature, layer) {
-						// 	var html = "";
-						// 	for (prop in feature.properties){
-						// 		if (prop != 'memid'){
-						// 		  html += "<tr>" +prop+": "+feature.properties[prop]+"</tr>";
-						// 		} else {}
-						// 	};
-						// 	pushPinMarker.bindPopup(html);
-					 //        // $('#singleResultTable').append(html);
-					 //    }
-
-					});	
-
-				     
-
-				}).done(function(e){
-					LandAcquisitions.on('click', function(e){
-						navTab('results', $("li[data-navlist-id='results']"));
-						// LandAcquisitions.eachLayer(function(layer){
-						// 	$(this).removeClass("active");
-						// })
-						this.setStyle({'fillcolor':'green'});
-						//this.setStyle({fillcolor:'red'})
-					});
+				    })
+    }).done(function(e){
 
 					var clusters = L.markerClusterGroup({
 							spiderfyOnMaxZoom:false,
@@ -141,7 +128,6 @@ function init(){
 };
 
 	  function navTab(id, tab){
-	  	console.log( tab)
 	  	$("li.navlist").removeClass("active");
 	  	$( tab ).addClass( "active" );
 	  	$("#search, #layers, #results, #lccmr").hide();
