@@ -53,11 +53,12 @@ function init(){
 					LandAcquisitions = L.geoJson(data, {
 						//style:myStyle,
 						pointToLayer: function(feature, latlng){
-							
+							console.log(feature.properties)
 							// var deselectedIcon = L.icon({iconUrl: 'images/pushpin.png'});
 							// var selected = L.icon({iconUrl:'images/selectedpushpin.png'});
-							var deselectedIcon = L.divIcon({className: 'deselected-icon'});
-							var selected = L.divIcon({className: 'selected-icon'});
+							var deselectedIcon = L.divIcon({className: 'deselected-icon', html:feature.properties.lccmrid});
+							var selected = L.divIcon({className: 'selected-icon', html:feature.properties.lccmrid});
+
 							pushPinMarker = L.marker(latlng, {icon:deselectedIcon})
 							                 .on('click', function(e) { 
 							                    LandAcquisitions.eachLayer(function(layer){

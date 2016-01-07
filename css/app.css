@@ -27,9 +27,9 @@ body {
     background: blue;
     border-radius: 50%;
     text-align: center;
-    color: white;
+    color: black;
     font-weight: 700;
-    border: 1px solid #ae4b37;
+    border: 1px solid blue;
     font-family: monospace;
   }
 
@@ -37,7 +37,7 @@ body {
     background: #ae4b37;
     border-radius: 50%;
     text-align: center;
-    color: white;
+    color: black;
     font-weight: 700;
     border: 1px solid #ae4b37;
     font-family: monospace;
