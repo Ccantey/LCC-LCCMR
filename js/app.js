@@ -1,7 +1,7 @@
 //core business logic
 var map, LandAcquisitions, switchMap ={},
 	labelarray = [];
-
+var previousSelection = [];
 //map Layers
 var pushPinMarker, vectorBasemap,streetsBasemap, MinnesotaBoundaryLayer;
 //map overlay layers... called like overlayLayers.CongressionalBoundaryLayer
@@ -53,25 +53,31 @@ function init(){
 					LandAcquisitions = L.geoJson(data, {
 						//style:myStyle,
 						pointToLayer: function(feature, latlng){
-							console.log(feature.properties)
+							// console.log(feature.properties)
 							// var deselectedIcon = L.icon({iconUrl: 'images/pushpin.png'});
 							// var selected = L.icon({iconUrl:'images/selectedpushpin.png'});
-							var deselectedIcon = L.divIcon({className: 'deselected-icon', html:feature.properties.lccmrid});
-							var selected = L.divIcon({className: 'selected-icon', html:feature.properties.lccmrid});
+							var deselectedIcon = L.divIcon({className: 'deselected-icon', html:"<div class='divtext'>"+feature.properties.lccmrid +"</div>"});
+							var selected = L.divIcon({className: 'selected-icon', html:"<div class='divtext'>"+feature.properties.lccmrid +"</div>"});
 
 							pushPinMarker = L.marker(latlng, {icon:deselectedIcon})
 							                 .on('click', function(e) { 
+							         
+							                 	previousSelection.push(e.target.feature.properties.lccmrid);
+							                 	// console.log(previousSelection)
 							                    LandAcquisitions.eachLayer(function(layer){
-							                    	console.log(layer)
+							                        // console.log(layer)							                    	
 							                    	navTab('results', $("li[data-navlist-id='results']"));
 							                    	if(layer.options.icon.options.className == "selected-icon"){
-							                    		console.log("deselected");
-							                    		layer.setIcon(deselectedIcon)
+							                    		//console.log("selected");
+							                    		deselectedIcon = L.divIcon({className: 'deselected-icon', html:"<div class='divtext'>"+previousSelection[previousSelection.length - 2 ] +"</div>"});
+							                    		layer.setIcon(deselectedIcon);
+							                    	} else {
+							                    		// console.log("deselected");
 							                    	}
 							                    })
-							                 	console.log(e.target);
-							                 	e.target.setIcon(selected)
-							                 	// this.options.color ="red";
+							                 	//console.log(e.target.feature.properties.lccmrid);
+							                 	e.target.setIcon(selected);
+
 							                 	var html = "";
 							                 	$('#data').html(html);
 												for (prop in feature.properties){

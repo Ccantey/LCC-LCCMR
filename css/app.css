@@ -24,23 +24,36 @@ body {
 }
 
 .deselected-icon {
-    background: blue;
+    background: #484995;
     border-radius: 50%;
     text-align: center;
     color: black;
     font-weight: 700;
-    border: 1px solid blue;
+    border: 2px solid #484995;
     font-family: monospace;
+    text-align: right;
+  }
+  .deselected-icon:hover{
+/*    -webkit-box-shadow: 0px 0px 15px 3px rgba(109, 109, 170, .75);
+       -moz-box-shadow: 0px 0px 15px 3px rgba(109, 109, 170, .75);
+            box-shadow: 0px 0px 15px 3px rgba(109, 109, 170, .75);*/
+    border: 2px solid #fc6244;
+    background: #6d6daa;
   }
 
   .selected-icon {
-    background: #ae4b37;
+    background: #484995;
     border-radius: 50%;
     text-align: center;
     color: black;
     font-weight: 700;
-    border: 1px solid #ae4b37;
+    border: 2px solid #fc6244;
     font-family: monospace;
+  }
+  .divtext{
+    position: absolute;
+    margin-left: 13px;
+    margin-top: -9px;
   }
 
 /*cluster styling*/
@@ -338,17 +351,30 @@ thead > tr > th{
     margin-left: -15px;
     width: 150px;
 }
+table{
+  border-collapse:unset;
+  font-size:13px;
+}
+.table > thead > tr > th {
+  border:none;
+  font-size: 13px;
+}
 .table > tbody > tr > td, .table > tbody > tr > th, .table > tfoot > tr > td, .table > tfoot > tr > th, .table > thead > tr > td, .table > thead > tr > th {
-    border-bottom: 1px solid #727d86;
-    border-top: 1px solid #727d86;
+/*    border-bottom: 1px solid #727d86;
+    border-top: 1px solid #727d86;*/
     line-height: 1.42857;
-    padding: 8px;
+    padding: 5px;
     vertical-align: top;
 }
 .table-hover > tbody > tr:hover{
 	background-color: #51616c;
 	color:#fff !important;
 	cursor:pointer;
+}
+#data >tr > th{
+  color:#7a7a7a;
+  font-weight: normal;
+  text-transform: uppercase;
 }
 
 /* Hide for mobile, show later */
