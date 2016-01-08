@@ -31,8 +31,9 @@ $(function() {
   });
 
   $('.first').click(function(){
-    navTab('search', $("li[data-navlist-id='search']"));
     clearmap();
+    navTab('search', $("li[data-navlist-id='search']"));
+
     //clearmap();
   })
 
