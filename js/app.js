@@ -3,9 +3,9 @@ var map, LandAcquisitions, switchMap = {};
 
 
 //map Layers
-var pushPinMarker, vectorBasemap, streetsBasemap, MinnesotaBoundaryLayer;
+var pushPinMarker, vectorBasemap, streetsBasemap, MinnesotaBoundaryLayer, selectedIcon;
 //map overlay layers... called like overlayLayers.CongressionalBoundaryLayer
-
+var previousSelection = [];
 var geocoder = null;
 
 function navTab (id, tab) {
@@ -27,19 +27,20 @@ function navTab (id, tab) {
         break;
     }
 }
-//Set initial basemap with initialize() - called in helper.js
+//Set initial basemap with init() - called in helper.js
 function init() {
-    // $("#map").height('544px');
 
     var southWest = L.latLng(41.86956, -105.7140625),
         northEast = L.latLng(50.1487464, -84.202832),
         bounds = L.latLngBounds(southWest, northEast);
+
     map = L.map("map", {
         center: L.latLng(46.1706, -94.9678),
         maxBounds: bounds,
         zoom: 7
     });
     // geocoder = new google.maps.Geocoder;
+
     // Add vector basemap
     vectorBasemap = L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiY2NhbnRleSIsImEiOiJjaWVsdDNubmEwMGU3czNtNDRyNjRpdTVqIn0.yFaW4Ty6VE3GHkrDvdbW6g', {
         maxZoom: 18,
@@ -70,32 +71,15 @@ function init() {
             pointToLayer: function (feature, latlng) {
                 // alternatively use image icons - i prefer divIcons for styling
                 // var deselectedIcon = L.icon({iconUrl: 'images/pushpin.png'});
-                // var selected = L.icon({iconUrl:'images/selectedpushpin.png'});
-                var deselectedIcon = L.divIcon({className: 'deselected-icon', html: "<div class='divtext'>" + feature.properties.lccmrid + "</div>"});
-                var selected = L.divIcon({className: 'selected-icon', html: "<div class='divtext'>" + feature.properties.lccmrid + "</div>"});
-
+                // var selectedIcon = L.icon({iconUrl:'images/selectedpushpin.png'});
+                deselectedIcon = L.divIcon({className: 'deselected-icon', html: "<div class='divtext'>" + feature.properties.lccmrid + "</div>"});
+                
                 pushPinMarker = L.marker(latlng, {icon: deselectedIcon})
                     .on('click', function (e) {
-                    	var selectedPropertyFeatures = e.target.feature.properties;
-                    	//display the correct id, otherwise displays current selection to previous selection point
-                    	var previousSelection = [];
-                        previousSelection.push(selectedPropertyFeatures.lccmrid);
-
-                        showParcelTable(selectedPropertyFeatures);
-
-                        LandAcquisitions.eachLayer(function (layer) {
-                            // console.log(layer)
-                            navTab('results', $("li[data-navlist-id='results']"));
-                            if (layer.options.icon.options.className === "selected-icon") {
-                                deselectedIcon = L.divIcon({className: 'deselected-icon', html: "<div class='divtext'>" + previousSelection[previousSelection.length - 2] + "</div>"});
-                                layer.setIcon(deselectedIcon);
-                            }
-                        });
-                        e.target.setIcon(selected);
-
+                    	var selectedProperty = e.target;
+                        showParcelTable(selectedProperty);
                     }); //end onclick
                 return pushPinMarker;
-
             } //end pointToLayer method
         }) //end LandAcquisition object
     }).done( function (e) {  //end $.geoJSON begin leaflet cluster group next
@@ -108,15 +92,12 @@ function init() {
                     opacity: 1,
                     fillOpacity: 0.5
             },
-
-                // this function defines how the icons
-                // representing  clusters are created
+                // this method defines how the proportional symbol clusters are created
                 iconCreateFunction: function (cluster) {
                     // get the number of items in the cluster
                     var count = cluster.getChildCount();
                     // figure out how many digits long the number is
                     var scale;
-                    //var digits = (count + '').length;
                     // Set proportional symbol scaling
                     if (count <= 10) {
                     	scale = 1;
@@ -130,45 +111,54 @@ function init() {
                     if (count > 50) {
                     	scale = 4;
                     }
-
                     // return a new L.DivIcon with our classes so we can
-                    // style them with CSS. Take a look at the CSS in
-                    // the <head> to see these styles. You have to set
-                    // iconSize to null if you want to use CSS to set the
-                    // width and height.
+                    // style them with CSS. You have to set iconSize to null
+                    // if you want to use CSS to set the width and height.
                     return new L.divIcon({
                         html: count,
                         className:'cluster scale-' + scale,
                         iconSize: null
                     });
-                }
-
-            });
+                } //end iconCreateFunction method
+            }); //end clusters object
             clusters.addLayer(LandAcquisitions);
             clusters.addTo(map);
     }); //getJson
     // toggleBaseLayers($('#satellitonoffswitch'),vectorBasemap,streetsBasemap);
-}//end init()
+} //end init()
 
-function showParcelTable (feature) {
+function showParcelTable (selection) {
     var html = "";
     $('#data').html(html);
-    for (prop in feature) {
+    //console.log(selection);
+    for (prop in selection.feature.properties) {
+    	//console.log(prop)
     	if (prop === 'lccmrid') {
-            html += "<tr><th>" + prop + ": </th><td><a href='http://www.lccmr.leg.mn/LandAcquisitions/Initial_Report_PDFs/" + feature[prop] + ".pdf' target = '_blank'>" + feature[prop] + "</a></td></tr>";
+            html += "<tr><th>" + prop + ": </th><td><a href='http://www.lccmr.leg.mn/LandAcquisitions/Initial_Report_PDFs/" + selection.feature.properties[prop] + ".pdf' target = '_blank'>" + selection.feature.properties[prop] + "</a></td></tr>";
         }
     	if (prop !== 'memid' && prop !== 'lccmrid') {
-            html += "<tr><th>" + prop + ": </th><td>" + feature[prop] + "</td></tr>";
+            html += "<tr><th>" + prop + ": </th><td>" + selection.feature.properties[prop] + "</td></tr>";
         }        
     };
     $('#data').append(html);
-
-	//pass in to parcel
-	showParcelGeoJSON(feature.lccmrid);
+	showSelectedIcon(selection);
 }
 
-function showParcelGeoJSON (selection) {
-	console.log(selection);
+function showSelectedIcon (selection) {	
+    //display the correct id, otherwise displays current selection to previous selection point	
+    previousSelection.push(selection.feature.properties.lccmrid);
+
+    LandAcquisitions.eachLayer(function (layer) {
+        //toggle navigation tab
+        navTab('results', $("li[data-navlist-id='results']"));
+
+        if (layer.options.icon.options.className === "selected-icon") {
+            deselectedIcon = L.divIcon({className: 'deselected-icon', html: "<div class='divtext'>" + previousSelection[previousSelection.length - 2] + "</div>"});
+            layer.setIcon(deselectedIcon);
+        }
+    });
+    selectedIcon = L.divIcon({className: 'selected-icon', html: "<div class='divtext'>" + selection.feature.properties.lccmrid + "</div>"});
+    selection.setIcon(selectedIcon);
 }
 
 // function layerNavTab (id) {
