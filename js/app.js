@@ -1,36 +1,18 @@
 //core business logic
-var map, LandAcquisitions, switchMap = {};
+var map, bounds, LandAcquisitions, switchMap = {};
 //map Layers
-var pushPinMarker, vectorBasemap, streetsBasemap, MinnesotaBoundaryLayer, selectedIcon, parcelGeoJSON;
+var pushPinMarker, vectorBasemap, streetsBasemap, MinnesotaBoundaryLayer, selectedIcon;
 //map overlay layers... called like overlayLayers.CongressionalBoundaryLayer
 var previousSelection = [];
 var geocoder = null;
 
-function navTab (id, tab) {
-    $("li.navlist").removeClass("active");
-    $(tab).addClass("active");
-    $("#search, #layers, #results, #lccmr").hide();
-    switch (id) {
-    case "search":
-        $('#' + id).show();
-        break;
-    case "layers":
-        $('#' + id).show();
-        break;
-    case "results":
-        $('#' + id).show();
-        break;
-    case "lccmr":
-        $('#' + id).show();
-        break;
-    }
-}
+
 //Set initial basemap with init() - called in helper.js
-function init() {
+function init () {
 
     var southWest = L.latLng(41.86956, -105.7140625),
-        northEast = L.latLng(50.1487464, -84.202832),
-        bounds = L.latLngBounds(southWest, northEast);
+        northEast = L.latLng(50.1487464, -84.202832);
+    bounds = L.latLngBounds(southWest, northEast);
 
     map = L.map("map", {
         center: L.latLng(46.1706, -94.9678),
@@ -90,13 +72,13 @@ function init() {
                     opacity: 1,
                     fillOpacity: 0.5
             },
-                // this method defines how the proportional symbol clusters are created
+                // this method defines how the graduated symbol clusters are created
                 iconCreateFunction: function (cluster) {
                     // get the number of items in the cluster
                     var count = cluster.getChildCount();
                     // figure out how many digits long the number is
                     var scale;
-                    // Set proportional symbol scaling
+                    // Set graduated symbol scaling
                     if (count <= 10) {
                     	scale = 1;
                     }
@@ -146,19 +128,26 @@ function showSelectedIcon (selection) {
     //display the correct id, otherwise displays current selection to previous selection point	
     previousSelection.push(selection.feature.properties.lccmrid);
 
-    LandAcquisitions.eachLayer(function (layer) {
-        //toggle navigation tab
-        navTab('results', $("li[data-navlist-id='results']"));
+    toggleIcon(2);
 
-        if (layer.options.icon.options.className === "selected-icon") {
-            deselectedIcon = L.divIcon({className: 'deselected-icon', html: "<div class='divtext'>" + previousSelection[previousSelection.length - 2] + "</div>"});
-            layer.setIcon(deselectedIcon);
-        }
-    });
     selectedIcon = L.divIcon({className: 'selected-icon', html: "<div class='divtext'>" + selection.feature.properties.lccmrid + "</div>"});
+
     selection.setIcon(selectedIcon);
     //load geojson parcel, make available only at scale below x, zoom to it, if zoom out back to selectedIcon
     loadParcel(selection.feature.properties.lccmrid)
+}
+
+//common task, requires the last index of array - if a property is selected only once before clearmap(), throws an error
+//so index will always be either 1 or 2
+function toggleIcon (index) {
+	LandAcquisitions.eachLayer(function (layer) {
+        //toggle navigation tab
+        navTab('results', $("li[data-navlist-id='results']"));
+        if (layer.options.icon.options.className === "selected-icon") {
+            deselectedIcon = L.divIcon({className: 'deselected-icon', html: "<div class='divtext'>" + previousSelection[previousSelection.length - index] + "</div>"});
+            layer.setIcon(deselectedIcon);
+        }
+    });
 }
 
 function loadParcel (id) {
@@ -186,20 +175,45 @@ function showParcel (d) {
         "opacity": 0.65
     };
     parcelGeoJSON = L.geoJson(d, {
-        style:myStyle,
-        onEachFeature: function (feature, layer) {
-            var html = "";
-            for (prop in feature.properties){
-                if (prop != 'memid'){
-                    html += prop+": "+feature.properties[prop]+"<br>";
-                }
-            };
-            layer.bindPopup(html);
-        }
+        style:myStyle
     }).addTo(map);
     //zoom to selection
-    map.fitBounds(parcelGeoJSON.getBounds());
+    var parcelBounds = parcelGeoJSON.getBounds();
+    map.fitBounds(parcelBounds, {maxZoom:14});
 }
+
+function navTab (id, tab) {
+    $("li.navlist").removeClass("active");
+    $(tab).addClass("active");
+    $("#search, #layers, #results, #lccmr").hide();
+    switch (id) {
+    case "search":
+        $('#' + id).show();
+        break;
+    case "layers":
+        $('#' + id).show();
+        break;
+    case "results":
+        $('#' + id).show();
+        break;
+    case "lccmr":
+        $('#' + id).show();
+        break;
+    }
+}
+function clearmap () {
+    
+    $('#data').hide();	
+	map.fitBounds(bounds).setZoom(7);
+	toggleIcon(1);
+	if (typeof parcelGeoJSON !== "undefined" ){
+		map.removeLayer(parcelGeoJSON);
+		delete parcelGeoJSON;
+	}
+	
+
+}
+
 
 // function layerNavTab (id) {
 //     $("#politicalSwitches, #physicalSwitches, #naturalSwitches, #basemap").hide();

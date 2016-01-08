@@ -7,6 +7,15 @@ $(function() {
   //load map layers
   init();
   
+  map.on('zoomend', function (e) {
+    if (typeof parcelGeoJSON !== "undefined" ){
+      if (map.getZoom() < 12){
+        map.removeLayer(parcelGeoJSON);
+      } else {
+        map.addLayer(parcelGeoJSON);
+      }
+    }
+  })
   //Gray sidebar navigation
  $('.navlist').click(function(e){
   	navTab($(this).data('navlist-id'), this);    
@@ -20,6 +29,12 @@ $(function() {
     $("li.layersli").removeClass("active");
   	$( this ).addClass( "active" );
   });
+
+  $('.first').click(function(){
+    navTab('search', $("li[data-navlist-id='search']"));
+    clearmap();
+    //clearmap();
+  })
 
 
 
