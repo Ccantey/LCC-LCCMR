@@ -1,9 +1,7 @@
 //core business logic
 var map, LandAcquisitions, switchMap = {};
-
-
 //map Layers
-var pushPinMarker, vectorBasemap, streetsBasemap, MinnesotaBoundaryLayer, selectedIcon;
+var pushPinMarker, vectorBasemap, streetsBasemap, MinnesotaBoundaryLayer, selectedIcon, parcelGeoJSON;
 //map overlay layers... called like overlayLayers.CongressionalBoundaryLayer
 var previousSelection = [];
 var geocoder = null;
@@ -159,6 +157,48 @@ function showSelectedIcon (selection) {
     });
     selectedIcon = L.divIcon({className: 'selected-icon', html: "<div class='divtext'>" + selection.feature.properties.lccmrid + "</div>"});
     selection.setIcon(selectedIcon);
+    //load geojson parcel, make available only at scale below x, zoom to it, if zoom out back to selectedIcon
+    loadParcel(selection.feature.properties.lccmrid)
+}
+
+function loadParcel (id) {
+	var lccmrid = {id:id};
+	$.ajax("php/getParcelData.php", {
+		data: lccmrid,
+		success: function(result){			
+			showParcel(result);
+		}, 
+		error: function(){
+			console.log('error');
+		}
+	});
+}
+
+function showParcel (d) {
+    // console.log(d);
+    if (typeof parcelGeoJSON !== "undefined" ){ 
+        map.removeLayer(parcelGeoJSON);			
+    }
+    //parcel polygon overlay styling
+    var myStyle = {
+        "color": "#991a36",
+        "weight": 2,
+        "opacity": 0.65
+    };
+    parcelGeoJSON = L.geoJson(d, {
+        style:myStyle,
+        onEachFeature: function (feature, layer) {
+            var html = "";
+            for (prop in feature.properties){
+                if (prop != 'memid'){
+                    html += prop+": "+feature.properties[prop]+"<br>";
+                }
+            };
+            layer.bindPopup(html);
+        }
+    }).addTo(map);
+    //zoom to selection
+    map.fitBounds(parcelGeoJSON.getBounds());
 }
 
 // function layerNavTab (id) {
