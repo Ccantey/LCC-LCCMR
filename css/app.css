@@ -79,7 +79,7 @@ body {
      border: 1px solid white;
   }
 
-  .digits-1 {
+  .scale-1 {
     font-size: 15px;
     height: 34px;
     width: 34px;
@@ -88,11 +88,11 @@ body {
     margin-left: -14px;
      padding-top: 	3px;
   }
-    .digits-1:before {
+    .scale-1:before {
     border-width: 2px;
   }
 
-  .digits-2 {
+  .scale-2 {
     font-size: 18px;
     height: 48px;
     width: 48px;
@@ -102,11 +102,11 @@ body {
     padding-top: 	7px;
   }
 
-  .digits-2:before {
+  .scale-2:before {
     border-width: 3px;
   }
 
-  .digits-3 {
+  .scale-3 {
     font-size: 18px;
     height: 54px;
     width: 54px;
@@ -117,11 +117,11 @@ body {
     padding-top:3px;
   }
 
-  .digits-3:before {
+  .scale-3:before {
     border-width: 3px;
   }
 
-  .digits-4 {
+  .scale-4 {
     font-size: 20px;
     height: 70px;
     width: 70px;
@@ -133,7 +133,7 @@ body {
     padding-right:2px;
   }
 
-  .digits-4:before {
+  .scale-4:before {
     border-width: 3px;
   }
 
@@ -208,6 +208,7 @@ li.searchli > a, li.layersli a{
 	height: 100%;
 	/*vertical-align: middle;*/
 }
+
 .searchli{
 	width:25%;
 	height:34px;
@@ -383,6 +384,10 @@ table{
   color:#7a7a7a;
   font-weight: normal;
   text-transform: uppercase;
+}
+#data a{
+  color: #50667f;
+  font-size: italic;
 }
 
 /* Hide for mobile, show later */

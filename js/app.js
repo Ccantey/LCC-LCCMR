@@ -1,11 +1,10 @@
 //core business logic
-var map, LandAcquisitions, switchMap = {}, labelarray = [];
+var map, LandAcquisitions, switchMap = {};
 
-var previousSelection = [];
+
 //map Layers
 var pushPinMarker, vectorBasemap, streetsBasemap, MinnesotaBoundaryLayer;
 //map overlay layers... called like overlayLayers.CongressionalBoundaryLayer
-
 
 var geocoder = null;
 
@@ -15,19 +14,15 @@ function navTab (id, tab) {
     $("#search, #layers, #results, #lccmr").hide();
     switch (id) {
     case "search":
-        // console.log(id);
         $('#' + id).show();
         break;
     case "layers":
-        // console.log(id);
         $('#' + id).show();
         break;
     case "results":
-        // console.log(id);
         $('#' + id).show();
         break;
     case "lccmr":
-        // console.log(id);
         $('#' + id).show();
         break;
     }
@@ -73,7 +68,7 @@ function init() {
         LandAcquisitions = L.geoJson(data, {
             //style:myStyle,
             pointToLayer: function (feature, latlng) {
-                // console.log(feature.properties)
+                // alternatively use image icons - i prefer divIcons for styling
                 // var deselectedIcon = L.icon({iconUrl: 'images/pushpin.png'});
                 // var selected = L.icon({iconUrl:'images/selectedpushpin.png'});
                 var deselectedIcon = L.divIcon({className: 'deselected-icon', html: "<div class='divtext'>" + feature.properties.lccmrid + "</div>"});
@@ -81,28 +76,23 @@ function init() {
 
                 pushPinMarker = L.marker(latlng, {icon: deselectedIcon})
                     .on('click', function (e) {
-                        previousSelection.push(e.target.feature.properties.lccmrid);
-                        // console.log(previousSelection)
+                    	var selectedPropertyFeatures = e.target.feature.properties;
+                    	//display the correct id, otherwise displays current selection to previous selection point
+                    	var previousSelection = [];
+                        previousSelection.push(selectedPropertyFeatures.lccmrid);
+
+                        showParcelTable(selectedPropertyFeatures);
+
                         LandAcquisitions.eachLayer(function (layer) {
                             // console.log(layer)
                             navTab('results', $("li[data-navlist-id='results']"));
                             if (layer.options.icon.options.className === "selected-icon") {
-                                //console.log("selected");
                                 deselectedIcon = L.divIcon({className: 'deselected-icon', html: "<div class='divtext'>" + previousSelection[previousSelection.length - 2] + "</div>"});
                                 layer.setIcon(deselectedIcon);
                             }
                         });
-                        //console.log(e.target.feature.properties.lccmrid);
                         e.target.setIcon(selected);
-                        var html = "";
-                        $('#data').html(html);
-                        console.log(Object.keys(feature.properties));
-                        for (prop in feature.properties) {
-                            if (prop !== 'memid') {
-                                html += "<tr><th>" + prop + ": </th><td>" + feature.properties[prop] + "</td></tr>";
-                            }
-                        };
-                        $('#data').append(html);
+
                     }); //end onclick
                 return pushPinMarker;
 
@@ -125,9 +115,9 @@ function init() {
                     // get the number of items in the cluster
                     var count = cluster.getChildCount();
                     // figure out how many digits long the number is
-                    console.log(count);
                     var scale;
                     //var digits = (count + '').length;
+                    // Set proportional symbol scaling
                     if (count <= 10) {
                     	scale = 1;
                     }
@@ -148,7 +138,7 @@ function init() {
                     // width and height.
                     return new L.divIcon({
                         html: count,
-                        className:'cluster digits-' + scale,
+                        className:'cluster scale-' + scale,
                         iconSize: null
                     });
                 }
@@ -160,7 +150,26 @@ function init() {
     // toggleBaseLayers($('#satellitonoffswitch'),vectorBasemap,streetsBasemap);
 }//end init()
 
+function showParcelTable (feature) {
+    var html = "";
+    $('#data').html(html);
+    for (prop in feature) {
+    	if (prop === 'lccmrid') {
+            html += "<tr><th>" + prop + ": </th><td><a href='http://www.lccmr.leg.mn/LandAcquisitions/Initial_Report_PDFs/" + feature[prop] + ".pdf' target = '_blank'>" + feature[prop] + "</a></td></tr>";
+        }
+    	if (prop !== 'memid' && prop !== 'lccmrid') {
+            html += "<tr><th>" + prop + ": </th><td>" + feature[prop] + "</td></tr>";
+        }        
+    };
+    $('#data').append(html);
 
+	//pass in to parcel
+	showParcelGeoJSON(feature.lccmrid);
+}
+
+function showParcelGeoJSON (selection) {
+	console.log(selection);
+}
 
 // function layerNavTab (id) {
 //     $("#politicalSwitches, #physicalSwitches, #naturalSwitches, #basemap").hide();
