@@ -1,11 +1,12 @@
 $(function() {
-
-  // Handler for .ready() called.
-  init();
-
+  
   //initial 'active' states
   $("#layers, #results, #lccmr").hide();
   $("#physicalSwitches, #naturalSwitches, #basemap").hide();
+  // Handler for .ready() called.
+  init();
+
+
   
   //Gray sidebar navigation
  $('.navlist').click(function(e){

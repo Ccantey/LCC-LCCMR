@@ -80,7 +80,7 @@ body {
   }
 
   .digits-1 {
-    font-size: 14px;
+    font-size: 15px;
     height: 34px;
     width: 34px;
     line-height: 28px;
@@ -88,9 +88,12 @@ body {
     margin-left: -14px;
      padding-top: 	3px;
   }
+    .digits-1:before {
+    border-width: 2px;
+  }
 
   .digits-2 {
-    font-size: 16px;
+    font-size: 18px;
     height: 48px;
     width: 48px;
     line-height: 35px;
@@ -100,7 +103,7 @@ body {
   }
 
   .digits-2:before {
-    border-width: 2px;
+    border-width: 3px;
   }
 
   .digits-3 {
@@ -111,6 +114,7 @@ body {
     border-width: 3px;
     margin-top: -24px;
     margin-left: -24px;
+    padding-top:3px;
   }
 
   .digits-3:before {
@@ -118,18 +122,22 @@ body {
   }
 
   .digits-4 {
-    font-size: 18px;
+    font-size: 20px;
     height: 70px;
     width: 70px;
     line-height: 57px;
-    border-width: 4px;
+    border-width: 3px;
     margin-top: -29px;
     margin-left: -29px;
+    padding-top:6px;
+    padding-right:2px;
   }
 
   .digits-4:before {
-    border-width: 4px;
+    border-width: 3px;
   }
+
+
 
 #navtabs {
     background-color: #393f43;
