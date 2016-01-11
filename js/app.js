@@ -187,7 +187,8 @@ function navTab (id, tab) {
     $("li.navlist").removeClass("active");
     $(tab).addClass("active");
     $("#search, #layers, #results, #lccmr").hide();
-    $('.sidebar').css('left','48px')
+    $('.sidebar').css('left','48px');
+    $('.leaflet-left').css('left', '330px');
     switch (id) {
     case "search":
         $('#' + id).show();

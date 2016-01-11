@@ -1,7 +1,7 @@
 $(function() {
 
   //initial 'active' states
-  $("#layers, #results, #lccmr").hide();
+  // $("#layers, #results, #lccmr").hide();
   $("#physicalSwitches, #naturalSwitches, #basemap").hide();
 
   //load map layers
@@ -43,6 +43,11 @@ $(function() {
     //console.log(typeof($(this).attr('id')));
         getOverlayLayers($(this), $(this).attr('id'));
   });
+
+  $('.closetab').click(function(){
+     $('.sidebar').css('left','-237px');
+     $('.leaflet-left').css('left', '50px');
+  })
 
 
 

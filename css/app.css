@@ -522,11 +522,14 @@ table{
     position: absolute;
     right: 10px;
     top: 10px;
-}
-.closetab:hover {
-    cursor:pointer;
-    color: #fff;
+  }
+  .closetab:hover {
+      cursor:pointer;
+      color: #fff;
 
+  }
+  .leaflet-left {
+    left: 50px; /*add media querries*/
 }
 }
 
