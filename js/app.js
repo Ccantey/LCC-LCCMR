@@ -1,5 +1,5 @@
 //core business logic
-var map, bounds, LandAcquisitions, switchMap = {};
+var map, bounds, LandAcquisitions, overlayLayers={}, switchMap = {};
 //map Layers
 var pushPinMarker, vectorBasemap, streetsBasemap, MinnesotaBoundaryLayer, selectedIcon;
 //map overlay layers... called like overlayLayers.CongressionalBoundaryLayer
@@ -178,6 +178,7 @@ function showParcel (d) {
         style:myStyle
     }).addTo(map);
     //zoom to selection
+    $('#data').show();
     var parcelBounds = parcelGeoJSON.getBounds();
     map.fitBounds(parcelBounds, {maxZoom:14});
 }
@@ -210,8 +211,57 @@ function clearmap () {
 		map.removeLayer(parcelGeoJSON);
 		delete parcelGeoJSON;
 	}
-	
+}
 
+//fetch the overlay layers from WMS, published through FOSS mapserver (mapserver.org) - much faster than fetching large vector datasets through PGIS
+function getOverlayLayers(el, switchId){
+    $('#loading').show();
+
+    switchMap = {"laonoffswitch": "polygon",
+                 "sponoffswitch": "StateParks",
+                 "sflayeronoffswitch": "StateForests",
+                 "wmalayeronoffswitch": "WildlifeManagementAreas",
+                 "snalayeronoffswitch": "ScientificNaturalArea",
+                 "wmdlayeronoffswitch": "WetlandManagementDistricts",
+                 "bwcalayeronoffswitch": "BoundaryWaterCanoeArea",
+                 "nflayeronoffswitch": "NationalForest",
+                 "nwrlayeronoffswitch": "NationalWildlifeRefuges",
+                 "countylayeronoffswitch": "cty2010", 
+                 "citylayeronoffswitch":"mcd2010", 
+                 "cononoffswitch":"cng2012", 
+                 "senatelayeronoffswitch":"sen2012", 
+                 "houselayeronoffswitch":"hse2012_1"}
+    // console.log(typeof switchMap[switchId]);
+   
+    if(el.is(':checked')){
+    	map.removeLayer(overlayLayers[switchMap[switchId]]);
+        $('.leaflet-marker-icon.'+switchMap[switchId]).hide();
+		$('#loading').hide();
+    } else {
+    	$('.leaflet-marker-icon.'+switchMap[switchId]).show();
+        console.log(switchMap[switchId]);
+    	if(typeof overlayLayers[switchMap[switchId]] === 'undefined'){
+            if (switchMap[switchId] === 'polygon'){
+            	
+				overlayLayers[switchMap[switchId]].addTo(map);
+
+            } else {
+
+    		overlayLayers[switchMap[switchId]] = L.tileLayer.wms('/cgi-bin/mapserv?map=/web/gis/iMaps/LCCMR-LA/data/mapserver.map', {
+			    format: 'image/png',
+			    transparent: false,
+			    minZoom: 6,
+			    zIndex: 3,
+                crs:L.CRS.EPSG4326,
+			    layers: switchMap[switchId]
+			}).addTo(map);
+			$('#loading').hide();
+            }
+		} else {
+			overlayLayers[switchMap[switchId]].addTo(map);
+			$('#loading').hide();
+		}
+    }
 }
 
 

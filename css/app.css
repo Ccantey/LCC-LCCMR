@@ -102,6 +102,21 @@ body {
     margin-top: -9px;
   }
 
+  .layernotification{
+    position: absolute;
+    top:-11px;
+    left:27px;
+    background: #ae4b37;
+    border-radius: 50%;
+    text-align: center;
+    color: white;
+    height:16px;
+    width:16px;
+    font-weight: 700;
+    border: 1px solid #fff;
+    font-family: monospace;
+  }
+
 /*cluster styling*/
 .cluster {
     background: #ae4b37;
@@ -209,6 +224,12 @@ body {
 	color:#808080;
 	font-size: 11px;
 	padding:4px;
+}
+
+.navtext-layers{
+  color:#808080;
+  font-size: 11px;
+  padding: 6px 4px 4px 1px !important 
 }
 .nav > li >a{
 	padding:10px 0;

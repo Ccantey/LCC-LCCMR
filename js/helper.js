@@ -33,9 +33,16 @@ $(function() {
   $('.first').click(function(){
     clearmap();
     navTab('search', $("li[data-navlist-id='search']"));
-
     //clearmap();
-  })
+  });
+
+      //fetch overlay layers
+  $('#laonoffswitch,#sponoffswitch,#sflayeronoffswitch,#wmalayeronoffswitch,#wmdlayeronoffswitch,' +
+     '#snalayeronoffswitch,#wmdlayeronoffswitch,#bwcalayeronoffswitch,#nflayeronoffswitch,#nwrlayeronoffswitch,#countylayeronoffswitch,' +
+     '#cononoffswitch, #senatelayeronoffswitch, #houselayeronoffswitch, #citylayeronoffswitch').click(function(){
+    //console.log(typeof($(this).attr('id')));
+        getOverlayLayers($(this), $(this).attr('id'));
+  });
 
 
 
