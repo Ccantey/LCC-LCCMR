@@ -1,12 +1,159 @@
-/*
- * Base structure
- */
-
-/* Move down content because we have a fixed navbar that is 50px tall */
+/*bootstrap overrides*/
 body {
   /*padding-top: 50px;*/
   font-family: 'Open Sans', sans-serif;
 }
+.navbar-nav {
+    margin: 0;
+}
+.nav > li{
+  float:left;
+}
+.nav > li >a{
+  padding:10px 0;
+}
+/*Hide default border to remove 1px line*/
+.navbar-fixed-top {
+  border: 0;
+}
+
+.nav > li > a:focus, .nav > li > a:hover {
+  background-color: #eee;
+  text-decoration: none;
+  margin-top:-0;
+}
+
+li.searchli > a, li.layersli a{
+  padding: 2px 0;
+  line-height: 125%;
+  height: 100%;
+  /*vertical-align: middle;*/
+}
+
+form label{
+  font-weight: normal;
+}
+
+.form-control{
+  border-radius:0;
+  display:initial;
+  width:80%;
+  padding:0 5px;
+  height:36px;
+  margin-bottom:5px;
+}
+
+select.form-control{
+  background-color:#50667f;
+  color:#fff;
+  width:100%;
+  margin-top:4px;
+}
+
+/* RESULTS TAB*/
+thead > tr > th{
+  font-size:11px;
+}
+
+.table-hover > tbody > tr{
+  color: #7a7a7a;
+  font-size:12px;
+}
+
+table{
+  border-collapse:unset;
+  font-size:13px;
+}
+
+.table > thead > tr > th {
+  border:none;
+  font-size: 13px;
+}
+
+.table > tbody > tr > td, .table > tbody > tr > th, .table > tfoot > tr > td, .table > tfoot > tr > th, .table > thead > tr > td, .table > thead > tr > th {
+/*    border-bottom: 1px solid #727d86;
+    border-top: 1px solid #727d86;*/
+    line-height: 1.42857;
+    padding: 5px;
+    vertical-align: top;
+}
+
+.table-hover > tbody > tr:hover{
+  background-color: #51616c;
+  color:#fff !important;
+  cursor:pointer;
+}
+
+/*----------------------------------------------APPLICATION CSS----------------------------------------------------*/
+
+.sidebar {
+    color:#fff;
+    position: fixed;
+    width:284px;
+    top: 0;
+    bottom: 0;
+    left: 48px;
+    z-index: 100;
+    display: block;
+    padding: 20px;
+    overflow-x: hidden;
+    overflow-y: auto; 
+    background-color: #142736;
+
+  }
+
+/* Sidebar navigation */
+.nav-sidebar > .active > a,
+.nav-sidebar > .active > a:hover,
+.nav-sidebar > .active > a:focus {
+  color: #fff;
+  background-color:#51616c;
+  border-left: 4px solid #142736;
+  margin-left: -4px;
+}
+
+/*sidebar tab navigation*/
+.nav.navbar-nav.layersul > .active > a,
+.nav.navbar-nav.layersul > .active > a:hover,
+.nav.navbar-nav.layersul > .active > a:focus {
+  color: #fff;
+  background-color:#51616c;
+  outline-color: #51616c;
+/*  border-left: 4px solid #142736;
+  margin-left: -4px;*/
+}
+#navtabs {
+    background-color: #393f43;
+    border-right:1px solid #000;
+    /*border-left: 4px solid #727d86;*/
+    height: 100%;
+    width:48px;
+    left: 0;
+    position: absolute;
+    top: 0;
+    z-index: 101;
+}
+
+.navlist{
+  cursor:pointer;
+  border-bottom: 1px solid #727d86;    
+  width:47px;
+  text-align: center;
+  border-left: 4px solid #727d86;
+}
+
+.navtext{
+  color:#808080;
+  font-size: 11px;
+  padding:4px;
+}
+
+.navtext-layers{
+  color:#808080;
+  font-size: 11px;
+  padding: 6px 4px 4px 1px !important 
+}
+
 #logo{
 	position:absolute;
 	left:24%;
@@ -117,7 +264,105 @@ body {
     font-family: monospace;
   }
 
-/*cluster styling*/
+.navtitle{
+  text-align:center;
+  padding:17px 0;
+  font-size:18px;
+  font-weight: bold;
+}
+/* search tab*/
+.verticlealign{
+  /*margin-top:5px;*/
+}
+
+
+.searchli{
+  width:25%;
+  height:34px;
+  text-align: center;
+}
+.active.searchli, .active.layersli{ 
+  background-color:#51616c;
+}
+
+.active.searchli >a, .active.layersli >a{ 
+  color:#fff;
+}
+
+
+.layersli{
+  width:25%;
+  height:34px;
+  text-align: center;
+}
+.searchul, .layersul{
+  width:100%;
+  position:absolute;
+  left:0;
+  border-top: 2px solid #727d86;
+  border-bottom: 2px solid #727d86;
+}
+.rightline{
+  border-right: 1px solid #727d86;
+}
+.searchform{
+  margin-top: 76px;
+  padding-bottom: 40px;
+  border-bottom: 1px solid #727d86;
+}
+
+#addressSearchButton{
+  padding:0;
+  border-radius: 0;
+  background-color: #50667f;
+  color:#fff;
+  margin-bottom:3px;
+  margin-left:5px;
+  padding:7px 9px;
+  border-color:#50667f;
+}
+
+
+.selectform{
+  margin-top:40px;
+  padding-bottom: 40px;
+  border-bottom: 1px solid #727d86;
+}
+#replink{
+  text-align: center;
+  font-style: italic;
+  margin-top: 5px;
+}
+#replink a{
+  color:#50667f;
+}
+
+/*Layers tab*/
+
+#switchLabel{
+    position:relative;
+    top: 60px;
+    left:70px;
+}
+
+/*RESULTS TAB*/
+
+.multipleResultsTable {
+    margin-left: -15px;
+    width: 150px;
+}
+
+#data >tr > th{
+  color:#7a7a7a;
+  font-weight: normal;
+  text-transform: uppercase;
+}
+#data a{
+  color: #50667f;
+  font-size: italic;
+}
+
+/*------------------------------graduated symbol styling -------------------------------------------*/
 .cluster {
     background: #ae4b37;
     border-radius: 50%;
@@ -149,7 +394,8 @@ body {
     margin-left: -14px;
      padding-top: 	3px;
   }
-    .scale-1:before {
+
+  .scale-1:before {
     border-width: 2px;
   }
 
@@ -200,165 +446,8 @@ body {
 
 
 
-#navtabs {
-    background-color: #393f43;
-    border-right:1px solid #000;
-    /*border-left: 4px solid #727d86;*/
-    height: 100%;
-    width:48px;
-    left: 0;
-    position: absolute;
-    top: 0;
-    z-index: 101;
 
-}
-.navlist{
-	cursor:pointer;
-	border-bottom: 1px solid #727d86;    
-	width:47px;
-	text-align: center;
-	border-left: 4px solid #727d86;
-}
-
-.navtext{
-	color:#808080;
-	font-size: 11px;
-	padding:4px;
-}
-
-.navtext-layers{
-  color:#808080;
-  font-size: 11px;
-  padding: 6px 4px 4px 1px !important 
-}
-.nav > li >a{
-	padding:10px 0;
-}
-/*
- * Global add-ons
- */
-
-.sub-header {
-  padding-bottom: 10px;
-  border-bottom: 1px solid #eee;
-}
-
-/*
- * Top navigation
- * Hide default border to remove 1px line.
- */
-.navbar-fixed-top {
-  border: 0;
-}
-
-/*
- * Sidebar
- */
-.navtitle{
-	text-align:center;
-	padding:17px 0;
-	font-size:18px;
-	font-weight: bold;
-}
-/* search tab*/
-.verticlealign{
-	/*margin-top:5px;*/
-}
-.nav > li > a:focus, .nav > li > a:hover {
-  background-color: #eee;
-  text-decoration: none;
-  margin-top:-0;
-}
-li.searchli > a, li.layersli a{
-	padding: 2px 0;
-	line-height: 125%;
-	height: 100%;
-	/*vertical-align: middle;*/
-}
-
-.searchli{
-	width:25%;
-	height:34px;
-	text-align: center;
-}
-.active.searchli, .active.layersli{	
-	background-color:#51616c;
-}
-
-.active.searchli >a, .active.layersli >a{	
-	color:#fff;
-}
-
-
-.layersli{
-	width:25%;
-	height:34px;
-	text-align: center;
-}
-.searchul, .layersul{
-	width:100%;
-	position:absolute;
-	left:0;
-	border-top: 2px solid #727d86;
-	border-bottom: 2px solid #727d86;
-}
-.rightline{
-	border-right: 1px solid #727d86;
-}
-.searchform{
-	margin-top: 76px;
-	padding-bottom: 40px;
-	border-bottom: 1px solid #727d86;
-}
-form label{
-	font-weight: normal;
-}
-.form-control{
-	border-radius:0;
-	display:initial;
-	width:80%;
-	padding:0 5px;
-	height:36px;
-	margin-bottom:5px;
-}
-#addressSearchButton{
-	padding:0;
-	border-radius: 0;
-	background-color: #50667f;
-	color:#fff;
-	margin-bottom:3px;
-	margin-left:5px;
-	padding:7px 9px;
-	border-color:#50667f;
-}
-
-select.form-control{
-	background-color:#50667f;
-	color:#fff;
-	width:100%;
-	margin-top:4px;
-}
-.selectform{
-	margin-top:40px;
-	padding-bottom: 40px;
-	border-bottom: 1px solid #727d86;
-}
-#replink{
-	text-align: center;
-	font-style: italic;
-	margin-top: 5px;
-}
-#replink a{
-	color:#50667f;
-}
-
-/*Layers tab*/
-#switchLabel{
-    position:relative;
-    top: 60px;
-    left:70px;
-}
-
+/*----------------------Layer toggle switches-------------------------------*/
 
 .layersswitchLabel{
     position:   relative;   
@@ -415,128 +504,32 @@ select.form-control{
     right: 0px; 
 }
 
-/*RESULTS TAB*/
-thead > tr > th{
-	font-size:11px;
-}
-.table-hover > tbody > tr{
-	color: #7a7a7a;
-	font-size:12px;
-}
-.multipleResultsTable {
-    margin-left: -15px;
-    width: 150px;
-}
-table{
-  border-collapse:unset;
-  font-size:13px;
-}
-.table > thead > tr > th {
-  border:none;
-  font-size: 13px;
-}
-.table > tbody > tr > td, .table > tbody > tr > th, .table > tfoot > tr > td, .table > tfoot > tr > th, .table > thead > tr > td, .table > thead > tr > th {
-/*    border-bottom: 1px solid #727d86;
-    border-top: 1px solid #727d86;*/
-    line-height: 1.42857;
-    padding: 5px;
-    vertical-align: top;
-}
-.table-hover > tbody > tr:hover{
-	background-color: #51616c;
-	color:#fff !important;
-	cursor:pointer;
-}
-#data >tr > th{
-  color:#7a7a7a;
-  font-weight: normal;
-  text-transform: uppercase;
-}
-#data a{
-  color: #50667f;
-  font-size: italic;
+/*------------------------------------------- media queries -----------------------------------------*/
+
+@media (min-width: 768px) {
+  .closetab{
+    display:none;
+  }
 }
 
-/* Hide for mobile, show later */
-.sidebar {
-  display: none;
-}
-@media (min-width: 768px) {
+@media (max-width: 768px) {
   .sidebar {
-  	color:#fff;
-    position: fixed;
-    /*added fixed width!*/
-    width:284px;
-    top: 0;
-    bottom: 0;
-    left: 48px;
-    z-index: 100;
-    display: block;
-    padding: 20px;
-    overflow-x: hidden;
-    overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
-    background-color: #142736;
-
+    left: -237px;
   }
+  .closetab {
+    display:visible;
+    color: #727d86;
+    position: absolute;
+    right: 10px;
+    top: 10px;
 }
+.closetab:hover {
+    cursor:pointer;
+    color: #fff;
 
-/* Sidebar navigation */
-
-
-.nav-sidebar > .active > a,
-.nav-sidebar > .active > a:hover,
-.nav-sidebar > .active > a:focus {
-  color: #fff;
-  background-color:#51616c;
-  border-left: 4px solid #142736;
-  margin-left: -4px;
 }
-
-/*sidebar tab navigation*/
-.nav.navbar-nav.layersul > .active > a,
-.nav.navbar-nav.layersul > .active > a:hover,
-.nav.navbar-nav.layersul > .active > a:focus {
-  color: #fff;
-  background-color:#51616c;
-  outline-color: #51616c;
-/*  border-left: 4px solid #142736;
-  margin-left: -4px;*/
 }
 
 
-/*
- * Main content
- */
-
-.main {
-  padding: 20px;
-}
-@media (min-width: 768px) {
-  .main {
-    padding-right: 40px;
-    padding-left: 40px;
-  }
-}
-.main .page-header {
-  margin-top: 0;
-}
 
 
-/*
- * Placeholder dashboard ideas
- */
-
-.placeholders {
-  margin-bottom: 30px;
-  text-align: center;
-}
-.placeholders h4 {
-  margin-bottom: 0;
-}
-.placeholder {
-  margin-bottom: 20px;
-}
-.placeholder img {
-  display: inline-block;
-  border-radius: 50%;
-}
