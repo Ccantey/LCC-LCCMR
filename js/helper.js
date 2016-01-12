@@ -3,6 +3,8 @@ $(function() {
   //initial 'active' states
   // $("#layers, #results, #lccmr").hide();
   $("#physicalSwitches, #naturalSwitches, #basemap").hide();
+  //activate tooltips
+  $('[data-toggle="tooltip"]').tooltip();
 
   //load map layers
   init();
