@@ -213,8 +213,26 @@ function clearmap () {
 		map.removeLayer(parcelGeoJSON);
 		delete parcelGeoJSON;
 	}
-}
+	//Remove all layers except the basemap -- down here because its an asychronous thead apparently
+	map.eachLayer(function(layer){
+		//Remove map layers except mapbox
+		if (typeof layer.defaultWmsParams !== "undefined"){
+			map.removeLayer(layer);				
+		};	
+	});
+	toggleLayerSwitches();
+	// $('.layernotification').hide() and their values = ''
 
+}
+function toggleLayerSwitches (){
+    var inputs = $(".onoffswitch-checkbox");
+    for (var i = 0, il = inputs.length; i < il; i++) {
+    	var inputsID = '#'+ inputs[i].id;
+        if($(inputsID).not(':checked')){
+        	$(inputsID).prop('checked', true);
+        }         
+    }	
+}
 //fetch the overlay layers from WMS, published through FOSS mapserver (mapserver.org) - much faster than fetching large vector datasets through PGIS
 function getOverlayLayers(el, switchId){
     $('#loading').show();
