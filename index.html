@@ -73,16 +73,13 @@
 						<form>
 						  <div class="form-group">
 						    <label for="addressSearch">Search by:</label>
-						    <select class="form-control">
-							  <option>County</option>
-							  <option>Aitkin</option>
-							  <option>Anoka</option>
-							  <option>Becker</option>
-							  <option>Blue Earth</option>
+						    <select class="form-control" id="countydropdown">
+							  
+
 							</select>
 
 							<select class="form-control">
-							  <option>Senate District</option>
+							  <option value="" disabled selected>Senate District</option>
 							  <option>1</option>
 							  <option>2</option>
 							  <option>3</option>
@@ -90,7 +87,7 @@
 							</select>
 
 							<select class="form-control">
-							  <option>House District</option>
+							  <option value="" disabled selected>House District</option>
 							  <option>1A</option>
 							  <option>1B</option>
 							  <option>2A</option>
@@ -417,7 +414,7 @@
         </div>
         <div id="map-tools">
 			<a href="#" class="first" data-toggle="tooltip" data-placement="bottom" title="Reset Map"><i class="fa fa-refresh fa-lg"></i></a>
-			<a href="#" class="middle" data-toggle="tooltip" data-placement="bottom" title="Print Map" id="print"><i class="fa fa-question-circle fa-lg"></i></a>
+			<a href="#" class="middle" data-toggle="tooltip" data-placement="bottom" title="Help" id="help"><i class="fa fa-question-circle fa-lg"></i></a>
 			<span data-toggle="modal" data-target="#share" style="cursor:pointer">
 			    <a class="last" data-toggle="tooltip" data-placement="bottom" title="Share Map" id="sharebutton"><i class="fa fa-share fa-lg"></i></a>
 			</span>

@@ -8,7 +8,20 @@ $(function() {
 
   //load map layers
   init();
-  
+
+  //Populate Search Select Boxes  
+  $.getJSON("php/getCounty.php",function(data){
+      var items="";
+      items = "<option value='' selected>County</option>"
+      for (i in data.features) {
+        var option = data.features[i].properties.name;
+        //console.log(data.features[i].properties.name);
+        items+="<option value='"+option+"'>"+option+"</option>";
+      }
+      $("#countydropdown").html(items); 
+    });
+
+
   map.on('zoomend', function (e) {
     if (typeof parcelGeoJSON !== "undefined" ){
       if (map.getZoom() < 12){
