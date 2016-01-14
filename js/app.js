@@ -139,6 +139,7 @@ function showSelectedIcon (selection) {
 
 //common task, requires the last index of array - if a property is selected only once before clearmap(), throws an error
 //so index will always be either 1 or 2
+//give a selected appearance to point data
 function toggleIcon (index) {
 	LandAcquisitions.eachLayer(function (layer) {
         //toggle navigation tab
@@ -209,6 +210,7 @@ function clearmap () {
     $('#data').hide();	
 	map.fitBounds(bounds).setZoom(7);
 	toggleIcon(1);
+    $('.locationzoom').prop('selectedIndex',0);
 	if (typeof parcelGeoJSON !== "undefined" ){
 		map.removeLayer(parcelGeoJSON);
 		delete parcelGeoJSON;
@@ -263,7 +265,7 @@ function getOverlayLayers(el, switchId){
 		$('#loading').hide();
     } else {
     	$('.leaflet-marker-icon.'+switchMap[switchId]).show();
-        console.log(switchMap[switchId]);
+        //console.log(switchMap[switchId]);
     	if(typeof overlayLayers[switchMap[switchId]] === 'undefined'){
             if (switchMap[switchId] === 'polygon'){
             	
@@ -289,6 +291,7 @@ function getOverlayLayers(el, switchId){
 }
 
 //select form queries
+//could pass this in from 3rd party as: http://ww2.commissions.leg.state.mn.us/gis/iMaps/LCCMR-LA/php/getSelectionData.php?db=hse2012_1&val=08A&col=district
 function getSelectLayer(val, db) {
     //console.log(val, db);
     var columnMap = {"cty2010":"name","hse2012_1":"district", "sen2012":"district"};
