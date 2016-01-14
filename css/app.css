@@ -94,7 +94,7 @@ table{
     top: 0;
     bottom: 0;
     left: 48px;
-    z-index: 100;
+    z-index: 1001;
     display: block;
     padding: 20px;
     overflow-x: hidden;
@@ -133,7 +133,7 @@ table{
     left: 0;
     position: absolute;
     top: 0;
-    z-index: 101;
+    z-index: 1002;
 }
 
 .navlist{
@@ -185,6 +185,7 @@ table{
 .leaflet-left {
     left: 330px; /*add media querries*/
 }
+
 /* Map tools */
 #map-tools {
   position: absolute;
@@ -541,16 +542,16 @@ table{
   }
 }*/
 
-@media (min-width:414px) and (max-width: 775px) {
+/*@media (min-width:414px) and (max-width: 775px) {
   .sidebar {
     left: -237px;
   }
 
 
   .leaflet-left {
-    left: 50px; /*add media querries*/
+    left: 50px; /*add media querries
 }
-}
+}*/
 
 
 

@@ -330,45 +330,18 @@ function zoomToSelection(d) {
 function openSidebar(){
     if ($('.sidebar').hasClass('closed')){
         $('.sidebar').removeClass('closed');
-        try{
-           $('.sidebar').animate({ 'left': '48px' }, 500);
-        }
-        catch(err){}
+        $('.sidebar').animate({ 'left': '48px' }, { duration: 300, queue: false });
+        $('.leaflet-left').animate({ 'left': '330px' }, { duration: 433, queue: false });        
     } 
 }
-function closeSidebar(){
 
+function closeSidebar(){
     if ($('.sidebar').hasClass('closed')){
-            $('.sidebar').removeClass('closed');
-            try{
-               $('.sidebar').animate({ 'left': '48px' }, 500);
-            }
-            catch(err){}
-        } 
-        else {
-            try{
-                $('.sidebar').addClass('closed');
-                $('.sidebar').animate({ 'left': '-100%' }, 500);
-            } catch(err){}} // Firebug throws a typeerror here - it doesn't break the app, 'easeInQuad' needs jQuery UI, but it forces the animation in desktop app... just ignore
+        $('.sidebar').removeClass('closed');
+        $('.sidebar').animate({ 'left': '48px' }, 500);
+    } else {
+        $('.leaflet-left').animate({ 'left': '48px' }, 300);
+        $('.sidebar').addClass('closed');
+        $('.sidebar').animate({ 'left': '-100%' }, 500);
+    }
 }
-// function layerNavTab (id) {
-//     $("#politicalSwitches, #physicalSwitches, #naturalSwitches, #basemap").hide();
-//     switch(id){
-//         case "politicalSwitches":
-//             console.log(id);
-//             $('#'+id).show();
-//         break;
-//         case "physicalSwitches":
-//             console.log(id);
-//             $('#'+id).show();
-//         break;
-//         case "naturalSwitches":
-//             console.log(id);
-//             $('#'+id).show();
-//         break;
-//         case "basemap":
-//             console.log(id);
-//             $('#'+id).show();
-//         break;
-//     }
-// }
