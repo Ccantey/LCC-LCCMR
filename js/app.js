@@ -284,6 +284,43 @@ function getOverlayLayers(el, switchId){
     }
 }
 
+//select form queries
+function getSelectLayer(val, db) {
+    //console.log(val, db);
+    var columnMap = {"cty2010":"name","hse2012_1":"district", "sen2012":"district"};
+    var q = {db:db, val:val, col:columnMap[db]};
+    $.ajax("php/getSelectionData.php", {
+        data: q,
+        success: function(result){          
+            zoomToSelection(result);
+        }, 
+        error: function(){
+            console.log('error');
+        }
+    });
+}
+
+function zoomToSelection(d) {
+    //console.log(d);
+
+    if (typeof selectionGeoJSON !== "undefined" ){ 
+        map.removeLayer(selectionGeoJSON);         
+    }
+    //parcel polygon overlay styling
+    var myStyle = {
+        "color": "#333",
+        "weight": 2,
+        "opacity": 0.65
+    };
+    selectionGeoJSON = L.geoJson(d, {
+        style:myStyle
+    }).addTo(map);
+    //zoom to selection
+    $('#data').show();
+    var parcelBounds = selectionGeoJSON.getBounds();
+    map.fitBounds(parcelBounds, {maxZoom:14});
+}
+
 
 // function layerNavTab (id) {
 //     $("#politicalSwitches, #physicalSwitches, #naturalSwitches, #basemap").hide();

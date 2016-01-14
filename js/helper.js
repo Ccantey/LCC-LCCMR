@@ -19,7 +19,7 @@ $(function() {
         //console.log(data.features[i].properties.name);
         items+="<option value='"+option+"'>"+option+"</option>";
       }
-      $("#countydropdown").html(items); 
+      $("#cty2010").html(items); 
     });
 
     $.getJSON("php/getSenate.php",function(data){
@@ -30,7 +30,7 @@ $(function() {
         //console.log(data.features[i].properties.name);
         items+="<option value='"+option+"'>"+option+"</option>";
       }
-      $("#senatedropdown").html(items); 
+      $("#sen2012").html(items); 
     });
 
     $.getJSON("php/getHouse.php",function(data){
@@ -41,9 +41,17 @@ $(function() {
         //console.log(data.features[i].properties.name);
         items+="<option value='"+option+"'>"+option+"</option>";
       }
-      $("#housedropdown").html(items); 
+      $("#hse2012_1").html(items); 
     });
 
+    $('.locationzoom').change(function(e){
+      var targetId = "#" + e.target.id;
+      $( targetId ).each(function() {
+          getSelectLayer( $( this ).val(), e.target.id);
+      });
+
+    });
+    //END select form helpers
 
   map.on('zoomend', function (e) {
     if (typeof parcelGeoJSON !== "undefined" ){
