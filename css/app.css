@@ -162,6 +162,18 @@ table{
 	bottom:10px;
   padding-top:  10px;
 }
+.closetab {
+    display:visible;
+    color: #727d86;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+  }
+    .closetab:hover {
+      cursor:pointer;
+      color: #fff;
+
+  }
 #map{
 	position:fixed;
 	top:0;
@@ -519,37 +531,21 @@ table{
         /* Standard */
         width: calc(100% - 48px);
   }
-    .closetab {
-    display:visible;
-    color: #727d86;
-    position: absolute;
-    right: 10px;
-    top: 10px;
-  }
+  
 
 }
-@media (min-width: 768px) {
+/*@media (min-width: 775px) {
   .closetab{
     display:none;
   }
-}
+}*/
 
-@media (min-width:414px) and (max-width: 768px) {
+@media (min-width:414px) and (max-width: 775px) {
   .sidebar {
     left: -237px;
   }
-  .closetab {
-    display:visible;
-    color: #727d86;
-    position: absolute;
-    right: 10px;
-    top: 10px;
-  }
-  .closetab:hover {
-      cursor:pointer;
-      color: #fff;
 
-  }
+
   .leaflet-left {
     left: 50px; /*add media querries*/
 }
