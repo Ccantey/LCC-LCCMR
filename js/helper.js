@@ -101,7 +101,7 @@ $(function() {
   });
 
   $('.closetab').click(function(){
-     $('.sidebar').css('left','-237px');
+     $('.sidebar').css('left','-100%');
      $('.leaflet-left').css('left', '50px');
   })
 

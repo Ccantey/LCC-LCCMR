@@ -84,6 +84,7 @@ table{
   cursor:pointer;
 }
 
+
 /*----------------------------------------------APPLICATION CSS----------------------------------------------------*/
 
 .sidebar {
@@ -99,6 +100,7 @@ table{
     overflow-x: hidden;
     overflow-y: auto; 
     background-color: #142736;
+    /*min-height:700px;*/
 
   }
 
@@ -154,10 +156,11 @@ table{
   padding: 6px 4px 4px 1px !important 
 }
 
-#logo{
+.logo{
 	position:absolute;
 	left:24%;
 	bottom:10px;
+  padding-top:  10px;
 }
 #map{
 	position:fixed;
@@ -505,14 +508,33 @@ table{
 }
 
 /*------------------------------------------- media queries -----------------------------------------*/
+@media (max-width:414px){
+   .sidebar {
+      /* Firefox */
+        width: -moz-calc(100% - 48px);
+        /* WebKit */
+        width: -webkit-calc(100% - 48px);
+        /* Opera */
+        width: -o-calc(100% - 48px);
+        /* Standard */
+        width: calc(100% - 48px);
+  }
+    .closetab {
+    display:visible;
+    color: #727d86;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+  }
 
+}
 @media (min-width: 768px) {
   .closetab{
     display:none;
   }
 }
 
-@media (max-width: 768px) {
+@media (min-width:414px) and (max-width: 768px) {
   .sidebar {
     left: -237px;
   }
