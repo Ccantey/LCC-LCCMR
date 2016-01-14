@@ -44,10 +44,19 @@ $(function() {
       $("#hse2012_1").html(items); 
     });
 
-    $('.locationzoom').change(function(e){
-      var targetId = "#" + e.target.id;
+    $('.locationzoom').change(function (e){
+      var targetId = "#" + this.id;
+      var selections = ['#cty2010', '#hse2012_1', '#sen2012'];
+      
+      //reset other select boxes
+      for (var i = 0, il = selections.length; i < il; i++) {
+        if (targetId !== selections[i]){
+          $(selections[i]).prop('selectedIndex', 0);
+        }      
+      }
+      //pass to getSelectLayer
       $( targetId ).each(function() {
-          getSelectLayer( $( this ).val(), e.target.id);
+          getSelectLayer( $( this ).val(), this.id);
       });
 
     });
@@ -62,6 +71,7 @@ $(function() {
       }
     }
   })
+
   //Gray sidebar navigation
  $('.navlist').click(function(e){
   	navTab($(this).data('navlist-id'), this);    

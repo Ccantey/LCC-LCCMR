@@ -212,7 +212,11 @@ function clearmap () {
 	if (typeof parcelGeoJSON !== "undefined" ){
 		map.removeLayer(parcelGeoJSON);
 		delete parcelGeoJSON;
-	}
+	};
+    if (typeof selectionGeoJSON !== "undefined" ){
+        map.removeLayer(selectionGeoJSON);
+        delete selectionGeoJSON;
+    }
 	//Remove all layers except the basemap -- down here because its an asychronous thead apparently
 	map.eachLayer(function(layer){
 		//Remove map layers except mapbox
