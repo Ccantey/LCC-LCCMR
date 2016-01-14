@@ -9,7 +9,8 @@ $(function() {
   //load map layers
   init();
 
-  //Populate Search Select Boxes  
+  //Populate Search Select Boxes 
+  // MAYBE PUT THIS INTO A FUNCITON IN APP AND STORE DATA IN AN OBJECT FOR LATER USE ON SELECTION 
   $.getJSON("php/getCounty.php",function(data){
       var items="";
       items = "<option value='' selected>County</option>"
@@ -19,6 +20,28 @@ $(function() {
         items+="<option value='"+option+"'>"+option+"</option>";
       }
       $("#countydropdown").html(items); 
+    });
+
+    $.getJSON("php/getSenate.php",function(data){
+      var items="";
+      items = "<option value='' selected>Senate District</option>"
+      for (i in data.features) {
+        var option = data.features[i].properties.district;
+        //console.log(data.features[i].properties.name);
+        items+="<option value='"+option+"'>"+option+"</option>";
+      }
+      $("#senatedropdown").html(items); 
+    });
+
+    $.getJSON("php/getHouse.php",function(data){
+      var items="";
+      items = "<option value='' selected>House District</option>"
+      for (i in data.features) {
+        var option = data.features[i].properties.district;
+        //console.log(data.features[i].properties.name);
+        items+="<option value='"+option+"'>"+option+"</option>";
+      }
+      $("#housedropdown").html(items); 
     });
 
 
