@@ -188,7 +188,7 @@ function navTab (id, tab) {
     $("li.navlist").removeClass("active");
     $(tab).addClass("active");
     $("#search, #layers, #results, #lccmr").hide();
-    $('.sidebar').css('left','48px');
+    openSidebar();
     $('.leaflet-left').css('left', '330px');
     switch (id) {
     case "search":
@@ -327,8 +327,30 @@ function zoomToSelection(d) {
     var parcelBounds = selectionGeoJSON.getBounds();
     map.fitBounds(parcelBounds, {maxZoom:14});
 }
+function openSidebar(){
+    if ($('.sidebar').hasClass('closed')){
+        $('.sidebar').removeClass('closed');
+        try{
+           $('.sidebar').animate({ 'left': '48px' }, 500);
+        }
+        catch(err){}
+    } 
+}
+function closeSidebar(){
 
-
+    if ($('.sidebar').hasClass('closed')){
+            $('.sidebar').removeClass('closed');
+            try{
+               $('.sidebar').animate({ 'left': '48px' }, 500);
+            }
+            catch(err){}
+        } 
+        else {
+            try{
+                $('.sidebar').addClass('closed');
+                $('.sidebar').animate({ 'left': '-100%' }, 500);
+            } catch(err){}} // Firebug throws a typeerror here - it doesn't break the app, 'easeInQuad' needs jQuery UI, but it forces the animation in desktop app... just ignore
+}
 // function layerNavTab (id) {
 //     $("#politicalSwitches, #physicalSwitches, #naturalSwitches, #basemap").hide();
 //     switch(id){

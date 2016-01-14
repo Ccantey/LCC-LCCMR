@@ -101,8 +101,10 @@ $(function() {
   });
 
   $('.closetab').click(function(){
-     $('.sidebar').css('left','-100%');
+    closeSidebar()
+     // $('.sidebar').css('left','-100%');
      $('.leaflet-left').css('left', '50px');
+      // $('.sidebar').animate({ 'left': '10px' }, 500, 'easeOutQuad');
   })
 
 
