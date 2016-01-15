@@ -532,9 +532,34 @@ table{
         width: -o-calc(100% - 48px);
         /* Standard */
         width: calc(100% - 48px);
-  }
-  
 
+  }  
+   .logo{
+      display:none;
+      /*margin-top:20px;*/
+      /*margin-left:24%;*/
+    }
+
+}
+
+@media (max-height:414px){
+   .logo{
+      display:none;
+      /*margin-top:20px;*/
+      /*margin-left:24%;*/
+    }
+/*    .logo{
+      position:relative;
+      margin-top:150px;
+
+      margin-left:5%;
+    }  */
+/*  #layers > .logo, #results > .logo{
+      position:absolute;
+      left:24%;
+      bottom:10px;
+      padding-top:  10px;
+    } */
 }
 /*@media (min-width: 775px) {
   .closetab{

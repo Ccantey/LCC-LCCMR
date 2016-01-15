@@ -3,9 +3,10 @@ $(function() {
   //initial 'active' states
   // $("#layers, #results, #lccmr").hide();
   $("#physicalSwitches, #naturalSwitches, #basemap").hide();
+  $('.layernotification').hide();
   //activate tooltips
   $('[data-toggle="tooltip"]').tooltip();
-
+  //addNotifications($( "[data-layerlist-id]" ));
   //load map layers
   init();
 
@@ -70,7 +71,7 @@ $(function() {
         map.addLayer(parcelGeoJSON);
       }
     }
-  })
+  });
 
   //Gray sidebar navigation
  $('.navlist').click(function(e){
@@ -85,6 +86,12 @@ $(function() {
     $("li.layersli").removeClass("active");
   	$( this ).addClass( "active" );
   });
+  
+  $( "[data-layerlist-id]" ).click(function(){
+      // console.log($(this));
+     // addNotifications(this);
+
+  });
 
   $('.first').click(function(){
     clearmap();
@@ -97,9 +104,15 @@ $(function() {
      '#snalayeronoffswitch,#wmdlayeronoffswitch,#bwcalayeronoffswitch,#nflayeronoffswitch,#nwrlayeronoffswitch,#countylayeronoffswitch,' +
      '#cononoffswitch, #senatelayeronoffswitch, #houselayeronoffswitch, #citylayeronoffswitch').click(function(){
     //console.log(typeof($(this).attr('id')));
-        getOverlayLayers($(this), $(this).attr('id'));
-  });
 
+        getOverlayLayers($(this), $(this).attr('id'));
+        console.log($(this));
+        var parents = $(this).parents();
+        var mapLayersTab = parents.parents();
+        //console.log(two[0].id)
+        addNotifications($('[data-layerlist-id='+mapLayersTab[0].id+']'));
+  });
+  
   $('.closetab').click(function(){
     closeSidebar()
      // $('.sidebar').css('left','-100%');

@@ -345,3 +345,29 @@ function closeSidebar(){
         $('.sidebar').animate({ 'left': '-100%' }, 500);
     }
 }
+
+function addNotifications(el){
+      //console.log(el);
+      var notificationCount = 0;
+      var notification = $(el).find('.layernotification');
+       //will assign that number
+      notification.hide();
+      var layerTabId = '#' + $(el).data('layerlist-id');
+      var layerSwitches = $(layerTabId).find('.onoffswitch');
+      for (var i = 0, il = layerSwitches.length; i < il; i++) {
+        var toggleId = '#'+layerSwitches[i].id;
+        console.log(toggleId)
+        if ($(toggleId).children().is(':checked')===false){
+            notification.show();
+            console.log($(toggleId).selector);
+            notificationCount += 1;
+        } else {
+
+          //notification.hide();
+        }
+        // if (thisSwitches[i].is(':checked')){
+        //   console.log(thisSwitches[i]);
+        // }      
+      }
+      notification.html(notificationCount);
+}
