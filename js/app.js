@@ -227,7 +227,7 @@ function clearmap () {
 		};	
 	});
 	toggleLayerSwitches();
-	// $('.layernotification').hide() and their values = ''
+	$('.layernotification').hide()// hide notificaions and set their values = 0
 
 }
 function toggleLayerSwitches (){
@@ -356,13 +356,12 @@ function addNotifications(el){
       var layerSwitches = $(layerTabId).find('.onoffswitch');
       for (var i = 0, il = layerSwitches.length; i < il; i++) {
         var toggleId = '#'+layerSwitches[i].id;
-        console.log(toggleId)
+        //console.log(toggleId)
         if ($(toggleId).children().is(':checked')===false){
             notification.show();
-            console.log($(toggleId).selector);
+            //console.log($(toggleId).selector);
             notificationCount += 1;
         } else {
-
           //notification.hide();
         }
         // if (thisSwitches[i].is(':checked')){
