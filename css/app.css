@@ -112,6 +112,14 @@ table{
   background-color: #32bcf0;
   
 }
+#FB,#TW{
+  color:none;
+}
+
+#FB:hover,#TW:hover{
+  text-decoration:none;
+  color:steelblue;
+}
 .sidebar {
     color:#fff;
     position: fixed;
@@ -348,7 +356,7 @@ table{
   border-right: 1px solid #727d86;
 }
 .searchform{
-  margin-top: 76px;
+  margin-top: 15px;
   padding-bottom: 40px;
   border-bottom: 1px solid #727d86;
 }
