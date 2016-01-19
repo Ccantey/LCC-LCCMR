@@ -325,23 +325,22 @@ function zoomToSelection(d, db) {
     $('#data').show();
     var parcelBounds = selectionGeoJSON.getBounds();
     map.fitBounds(parcelBounds, {maxZoom:14});
+
+    //delete all lines below to remove layer/switch toggle on search by:
     var reverseSwitchMap = { "cty2010": "countylayeronoffswitch", 
                              "sen2012": "senatelayeronoffswitch", 
                              "hse2012_1": "houselayeronoffswitch"}
-    // var switchMap ={ "cty2010": "countylayeronoffswitch", 
-    //                          "sen2012": "senatelayeronoffswitch", 
-    //                          "hse2012_1": "houselayeronoffswitch"}
 
-    console.log(reverseSwitchMap[db])
+    //check the switch box
     if ($('#'+reverseSwitchMap[db]).is(':checked')===true){
         $('#'+reverseSwitchMap[db]).prop('checked', false);
     }
+    //add notification
     var parents = $('#'+reverseSwitchMap[db]).parents();
-        var mapLayersTab = parents.parents();
-        //console.log(two[0].id)
-        addNotifications($('[data-layerlist-id='+mapLayersTab[0].id+']'));
+    var mapLayersTab = parents.parents();
+    addNotifications($('[data-layerlist-id='+mapLayersTab[0].id+']'));
 
-    //$('#countylayeronoffswitch').prop('checked', false)
+    //turn on layers
     getOverlayLayers($(reverseSwitchMap[db]), reverseSwitchMap[db])
 }
 

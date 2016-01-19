@@ -83,10 +83,35 @@ table{
   color:#fff !important;
   cursor:pointer;
 }
+.modal-dialog{
+  width:25%;
+}
 
 
 /*----------------------------------------------APPLICATION CSS----------------------------------------------------*/
+#facebookshare{
+   background-color: #3b5998;
+   height:75px;
+   color:#fff;
+   text-align: center;
+   padding-top: 25px;
+}
+#twittershare{
+  background-color: #00aced;
+  height:75px;
+  color:#fff;
+  text-align: center;
+  padding-top: 25px;
+}
+#facebookshare:hover{
+  background-color: #4e69a2;
 
+}
+
+#twittershare:hover{
+  background-color: #32bcf0;
+  
+}
 .sidebar {
     color:#fff;
     position: fixed;
