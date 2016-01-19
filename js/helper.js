@@ -103,7 +103,7 @@ $(function() {
   $('#laonoffswitch,#sponoffswitch,#sflayeronoffswitch,#wmalayeronoffswitch,#wmdlayeronoffswitch,' +
      '#snalayeronoffswitch,#wmdlayeronoffswitch,#bwcalayeronoffswitch,#nflayeronoffswitch,#nwrlayeronoffswitch,#countylayeronoffswitch,' +
      '#cononoffswitch, #senatelayeronoffswitch, #houselayeronoffswitch, #citylayeronoffswitch').click(function(){
-    //console.log(typeof($(this).attr('id')));
+    //console.log($(this), $(this).attr('id'));
 
         getOverlayLayers($(this), $(this).attr('id'));
         console.log($(this));

@@ -299,7 +299,7 @@ function getSelectLayer(val, db) {
     $.ajax("php/getSelectionData.php", {
         data: q,
         success: function(result){          
-            zoomToSelection(result);
+            zoomToSelection(result, db);
         }, 
         error: function(){
             console.log('error');
@@ -307,9 +307,8 @@ function getSelectLayer(val, db) {
     });
 }
 
-function zoomToSelection(d) {
+function zoomToSelection(d, db) {
     //console.log(d);
-
     if (typeof selectionGeoJSON !== "undefined" ){ 
         map.removeLayer(selectionGeoJSON);         
     }
@@ -326,7 +325,26 @@ function zoomToSelection(d) {
     $('#data').show();
     var parcelBounds = selectionGeoJSON.getBounds();
     map.fitBounds(parcelBounds, {maxZoom:14});
+    var reverseSwitchMap = { "cty2010": "countylayeronoffswitch", 
+                             "sen2012": "senatelayeronoffswitch", 
+                             "hse2012_1": "houselayeronoffswitch"}
+    // var switchMap ={ "cty2010": "countylayeronoffswitch", 
+    //                          "sen2012": "senatelayeronoffswitch", 
+    //                          "hse2012_1": "houselayeronoffswitch"}
+
+    console.log(reverseSwitchMap[db])
+    if ($('#'+reverseSwitchMap[db]).is(':checked')===true){
+        $('#'+reverseSwitchMap[db]).prop('checked', false);
+    }
+    var parents = $('#'+reverseSwitchMap[db]).parents();
+        var mapLayersTab = parents.parents();
+        //console.log(two[0].id)
+        addNotifications($('[data-layerlist-id='+mapLayersTab[0].id+']'));
+
+    //$('#countylayeronoffswitch').prop('checked', false)
+    getOverlayLayers($(reverseSwitchMap[db]), reverseSwitchMap[db])
 }
+
 function openSidebar(){
     if ($('.sidebar').hasClass('closed')){
         $('.sidebar').removeClass('closed');
@@ -363,10 +381,7 @@ function addNotifications(el){
             notificationCount += 1;
         } else {
           //notification.hide();
-        }
-        // if (thisSwitches[i].is(':checked')){
-        //   console.log(thisSwitches[i]);
-        // }      
+        }    
       }
       notification.html(notificationCount);
 }
