@@ -25,7 +25,6 @@ $(function() {
     })
 
   //Populate Search Select Boxes 
-  // MAYBE PUT THIS INTO A FUNCITON IN APP AND STORE DATA IN AN OBJECT FOR LATER USE ON SELECTION 
   $.getJSON("php/getCounty.php",function(data){
       var items="";
       items = "<option value='' selected>County</option>"
@@ -129,18 +128,6 @@ $(function() {
      $('#graylayeronoffswitch, #streetslayeronoffswitch, #satlayeronoffswitch').click(function(){
         //getBasemapLayer($(this), $(this).attr('id'));
         toggleBaseLayers($(this), grayBasemap, streetsBasemap, satelliteBasemap);
-        // if (map.hasLayer(vectorBasemap)){
-        //   map.removeLayer(vectorBasemap);
-        //   map.addLayer(streetsBasemap);
-        // } else {
-        //   map.removeLayer(streetsBasemap);
-        //   map.addLayer(vectorBasemap);
-        // }
-        //console.log($(this));
-        var parents = $(this).parents();
-        var mapLayersTab = parents.parents();
-        //console.log(two[0].id)
-        addNotifications($('[data-layerlist-id='+mapLayersTab[0].id+']'));
 
      })
   

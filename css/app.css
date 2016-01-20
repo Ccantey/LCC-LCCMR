@@ -313,6 +313,21 @@ table{
     border: 1px solid #fff;
     font-family: monospace;
   }
+    .layernotificationConstant{
+    position: absolute;
+    top:-11px;
+    left:27px;
+    background: #ae4b37;
+    border-radius: 50%;
+    text-align: center;
+    color: white;
+    height:16px;
+    width:16px;
+    font-weight: 700;
+    border: 1px solid #fff;
+    font-family: monospace;
+  }
+
 
 .navtitle{
   text-align:center;

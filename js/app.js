@@ -230,7 +230,7 @@ function clearmap () {
 }
 
 function resetLayers() {
-        if (typeof parcelGeoJSON !== "undefined" ){
+    if (typeof parcelGeoJSON !== "undefined" ){
         map.removeLayer(parcelGeoJSON);
         delete parcelGeoJSON;
     };
@@ -251,13 +251,14 @@ function resetLayers() {
     });
 }
 function toggleLayerSwitches (){
-    var inputs = $(".onoffswitch-checkbox");
+    var inputs = $(".onoffswitch-checkbox.overlay");
     for (var i = 0, il = inputs.length; i < il; i++) {
     	var inputsID = '#'+ inputs[i].id;
         if($(inputsID).not(':checked')){
         	$(inputsID).prop('checked', true);
         }         
     }	
+    //except 
 }
 
 //toggle basemap layers
@@ -446,6 +447,13 @@ function geoCodeAddress(geocoder, resultsMap) {
   var address = document.getElementById('addressSearch').value;
   $("#loading").show();
 
+  //clear searchboxes
+  var selections = ['#cty2010', '#hse2012_1', '#sen2012'];
+   for (var i = 0, il = selections.length; i < il; i++) {        
+          $(selections[i]).prop('selectedIndex', 0);
+    }      
+      
+
   geocoder.geocode({'address': address}, function(results, status) {
     if (status === google.maps.GeocoderStatus.OK) {
       var precision = results[0].geometry.location_type;
@@ -458,8 +466,10 @@ function geoCodeAddress(geocoder, resultsMap) {
       // console.log(pos.lat);
       // console.log(pos.lng);
       map.setView(L.latLng(pos.lat,pos.lng),13);
+      // toggleLayerSwitches();
+      // resetLayers();
       addMarker(pos);
-      //identifyDistrict(pos);
+      
       geocodeFeedback(precision, components);
     } else {
       alert('Geocode was not successful for the following reason: ' + status);
