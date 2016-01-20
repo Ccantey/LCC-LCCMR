@@ -1,7 +1,7 @@
 //core business logic
 var map, bounds, LandAcquisitions, overlayLayers={}, switchMap = {};
 //map Layers
-var pushPinMarker, vectorBasemap, streetsBasemap, MinnesotaBoundaryLayer, selectedIcon;
+var pushPinMarker, grayBasemap, streetsBasemap, satelliteBasemap, selectedIcon;
 //map overlay layers... called like overlayLayers.CongressionalBoundaryLayer
 var previousSelection = [];
 var geocoder = null;
@@ -21,8 +21,8 @@ function init () {
     });
     // geocoder = new google.maps.Geocoder;
 
-    // Add vector basemap
-    vectorBasemap = L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiY2NhbnRleSIsImEiOiJjaWVsdDNubmEwMGU3czNtNDRyNjRpdTVqIn0.yFaW4Ty6VE3GHkrDvdbW6g', {
+    // Add gray basemap
+    grayBasemap = L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiY2NhbnRleSIsImEiOiJjaWVsdDNubmEwMGU3czNtNDRyNjRpdTVqIn0.yFaW4Ty6VE3GHkrDvdbW6g', {
         maxZoom: 18,
         minZoom: 6,
         zIndex: 1,
@@ -34,6 +34,17 @@ function init () {
 
     // Add streets basemap
     streetsBasemap = L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiY2NhbnRleSIsImEiOiJjaWVsdDNubmEwMGU3czNtNDRyNjRpdTVqIn0.yFaW4Ty6VE3GHkrDvdbW6g', {
+        maxZoom: 18,
+        minZoom: 6,
+        zIndex: 1,
+        attribution: 'Basemap data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a>, ' +
+                'Legislative data &copy; <a href="http://www.gis.leg.mn/">LCC-GIS</a>, ' +
+                'Imagery Â© <a href="http://mapbox.com">Mapbox</a>',
+        id: 'mapbox.streets'
+    });
+
+    // Add satellite basemap
+    satelliteBasemap = L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiY2NhbnRleSIsImEiOiJjaWVsdDNubmEwMGU3czNtNDRyNjRpdTVqIn0.yFaW4Ty6VE3GHkrDvdbW6g', {
         maxZoom: 18,
         minZoom: 6,
         zIndex: 1,
@@ -104,7 +115,7 @@ function init () {
             clusters.addLayer(LandAcquisitions);
             clusters.addTo(map);
     }); //getJson
-    // toggleBaseLayers($('#satellitonoffswitch'),vectorBasemap,streetsBasemap);
+    //toggleBaseLayers($('#graylayeronoffswitch'),grayBasemap,streetsBasemap);
 } //end init()
 
 function showParcelTable (selection) {
@@ -211,24 +222,28 @@ function clearmap () {
 	map.fitBounds(bounds).setZoom(7);
 	toggleIcon(1);
     $('.locationzoom').prop('selectedIndex',0);
-	if (typeof parcelGeoJSON !== "undefined" ){
-		map.removeLayer(parcelGeoJSON);
-		delete parcelGeoJSON;
-	};
+	resetLayers();
+	toggleLayerSwitches();
+	$('.layernotification').hide()// hide notificaions and set their values = 0
+
+}
+
+function resetLayers() {
+        if (typeof parcelGeoJSON !== "undefined" ){
+        map.removeLayer(parcelGeoJSON);
+        delete parcelGeoJSON;
+    };
     if (typeof selectionGeoJSON !== "undefined" ){
         map.removeLayer(selectionGeoJSON);
         delete selectionGeoJSON;
     }
-	//Remove all layers except the basemap -- down here because its an asychronous thead apparently
-	map.eachLayer(function(layer){
-		//Remove map layers except mapbox
-		if (typeof layer.defaultWmsParams !== "undefined"){
-			map.removeLayer(layer);				
-		};	
-	});
-	toggleLayerSwitches();
-	$('.layernotification').hide()// hide notificaions and set their values = 0
-
+    //Remove all layers except the basemap -- down here because its an asychronous thead apparently
+    map.eachLayer(function(layer){
+        //Remove map layers except mapbox
+        if (typeof layer.defaultWmsParams !== "undefined"){
+            map.removeLayer(layer);             
+        };  
+    });
 }
 function toggleLayerSwitches (){
     var inputs = $(".onoffswitch-checkbox");
@@ -238,6 +253,42 @@ function toggleLayerSwitches (){
         	$(inputsID).prop('checked', true);
         }         
     }	
+}
+
+//toggle basemap layers
+function toggleBaseLayers(el, gray, street, sat){
+ 
+    var switchid = $(el).attr('id');
+    switch (switchid) {
+    case "streetslayeronoffswitch":
+        map.removeLayer(gray);
+        map.removeLayer(sat);
+        map.addLayer(street);
+        $('#graylayeronoffswitch').prop('checked', true);
+        $('#satlayeronoffswitch').prop('checked', true);
+        break;
+    case "graylayeronoffswitch":
+        map.removeLayer(street);
+        map.removeLayer(sat);
+        map.addLayer(gray);
+        $('#streetslayeronoffswitch').prop('checked', true);
+        $('#satlayeronoffswitch').prop('checked', true);
+        break;
+    case "satlayeronoffswitch":
+        map.removeLayer(street);
+        map.removeLayer(gray);
+        map.addLayer(sat);
+        $('#streetslayeronoffswitch').prop('checked', true);
+        $('#graylayeronoffswitch').prop('checked', true)
+        break;
+    }
+    // if (el.is(':checked')){
+    //     map.removeLayer(layer2);
+    //     map.addLayer(layer1);
+    // } else {
+    //     map.removeLayer(layer1);
+    //     map.addLayer(layer2);
+    // }
 }
 //fetch the overlay layers from WMS, published through FOSS mapserver (mapserver.org) - much faster than fetching large vector datasets through PGIS
 function getOverlayLayers(el, switchId){
@@ -309,9 +360,9 @@ function getSelectLayer(val, db) {
 
 function zoomToSelection(d, db) {
     //console.log(d);
-    if (typeof selectionGeoJSON !== "undefined" ){ 
-        map.removeLayer(selectionGeoJSON);         
-    }
+    toggleLayerSwitches();
+    resetLayers();
+    $('.layernotification').hide()
     //parcel polygon overlay styling
     var myStyle = {
         "color": "#333",
@@ -362,6 +413,7 @@ function closeSidebar(){
         $('.sidebar').animate({ 'left': '-100%' }, 500);
     }
 }
+
 
 function addNotifications(el){
       //console.log(el);

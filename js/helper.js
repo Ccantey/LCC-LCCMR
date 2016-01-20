@@ -6,7 +6,15 @@ $(function() {
   $('.layernotification').hide();
   //activate tooltips
   $('[data-toggle="tooltip"]').tooltip();
-  //addNotifications($( "[data-layerlist-id]" ));
+
+  //reset toggles if someone hits refresh
+  $('#laonoffswitch,#sponoffswitch,#sflayeronoffswitch,#wmalayeronoffswitch,#wmdlayeronoffswitch,' +
+     '#snalayeronoffswitch,#wmdlayeronoffswitch,#bwcalayeronoffswitch,#nflayeronoffswitch,#nwrlayeronoffswitch,#countylayeronoffswitch,' +
+     '#cononoffswitch, #senatelayeronoffswitch, #houselayeronoffswitch, #citylayeronoffswitch, #satlayeronoffswitch, #streetslayeronoffswitch').prop('checked', true);
+  
+  //set basemap toggle/notification
+  $('#graylayeronoffswitch').prop('checked', false);
+  addNotifications($('[data-layerlist-id="basemap"]'));
   //load map layers
   init();
 
@@ -112,6 +120,23 @@ $(function() {
         //console.log(two[0].id)
         addNotifications($('[data-layerlist-id='+mapLayersTab[0].id+']'));
   });
+     $('#graylayeronoffswitch, #streetslayeronoffswitch, #satlayeronoffswitch').click(function(){
+        //getBasemapLayer($(this), $(this).attr('id'));
+        toggleBaseLayers($(this), grayBasemap, streetsBasemap, satelliteBasemap);
+        // if (map.hasLayer(vectorBasemap)){
+        //   map.removeLayer(vectorBasemap);
+        //   map.addLayer(streetsBasemap);
+        // } else {
+        //   map.removeLayer(streetsBasemap);
+        //   map.addLayer(vectorBasemap);
+        // }
+        //console.log($(this));
+        var parents = $(this).parents();
+        var mapLayersTab = parents.parents();
+        //console.log(two[0].id)
+        addNotifications($('[data-layerlist-id='+mapLayersTab[0].id+']'));
+
+     })
   
   $('.closetab').click(function(){
     closeSidebar()
