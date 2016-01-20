@@ -242,6 +242,7 @@ function resetLayers() {
         map.removeLayer(pushPinMarker);
         delete pushPinMarker;
     }
+    $('.layernotification').hide();
     //Remove all layers except the basemap -- down here because its an asychronous thead apparently
     map.eachLayer(function(layer){
         //Remove map layers except mapbox
@@ -466,8 +467,8 @@ function geoCodeAddress(geocoder, resultsMap) {
       // console.log(pos.lat);
       // console.log(pos.lng);
       map.setView(L.latLng(pos.lat,pos.lng),13);
-      // toggleLayerSwitches();
-      // resetLayers();
+      toggleLayerSwitches();
+      resetLayers();
       addMarker(pos);
       
       geocodeFeedback(precision, components);
