@@ -19,7 +19,7 @@ function init () {
         maxBounds: bounds,
         zoom: 7
     });
-    // geocoder = new google.maps.Geocoder;
+    geocoder = new google.maps.Geocoder;
 
     // Add gray basemap
     grayBasemap = L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiY2NhbnRleSIsImEiOiJjaWVsdDNubmEwMGU3czNtNDRyNjRpdTVqIn0.yFaW4Ty6VE3GHkrDvdbW6g', {
@@ -224,7 +224,8 @@ function clearmap () {
     $('.locationzoom').prop('selectedIndex',0);
 	resetLayers();
 	toggleLayerSwitches();
-	$('.layernotification').hide()// hide notificaions and set their values = 0
+	$('.layernotification').hide();// hide notificaions and set their values = 0
+    $('#geocodeFeedback').hide();
 
 }
 
@@ -236,6 +237,10 @@ function resetLayers() {
     if (typeof selectionGeoJSON !== "undefined" ){
         map.removeLayer(selectionGeoJSON);
         delete selectionGeoJSON;
+    }pushPinMarker
+    if (typeof pushPinMarker !== "undefined" ){
+        map.removeLayer(pushPinMarker);
+        delete pushPinMarker;
     }
     //Remove all layers except the basemap -- down here because its an asychronous thead apparently
     map.eachLayer(function(layer){
@@ -436,3 +441,68 @@ function addNotifications(el){
       }
       notification.html(notificationCount);
 }
+
+function geoCodeAddress(geocoder, resultsMap) {
+  var address = document.getElementById('addressSearch').value;
+  $("#loading").show();
+
+  geocoder.geocode({'address': address}, function(results, status) {
+    if (status === google.maps.GeocoderStatus.OK) {
+      var precision = results[0].geometry.location_type;
+      var components = results[0].address_components;
+      var pos = {
+        latlng: {lat:results[0].geometry.location.lat(),lng:results[0].geometry.location.lng()},
+        lat:results[0].geometry.location.lat(),
+        lng:results[0].geometry.location.lng()
+      };
+      // console.log(pos.lat);
+      // console.log(pos.lng);
+      map.setView(L.latLng(pos.lat,pos.lng),13);
+      addMarker(pos);
+      //identifyDistrict(pos);
+      geocodeFeedback(precision, components);
+    } else {
+      alert('Geocode was not successful for the following reason: ' + status);
+      $('#loading').hide();
+    }
+  });
+}
+
+function geocodeFeedback(precision, components){
+    //console.log(precision, 'location, center of ', components[0].types[0]);
+    var message = "";
+    var componentMap = {"street_number": "street", "postal_code": "zip code", "administrative_area_level_1": "state", "locality": "city", "administrative_area_level_2": "county", "route": "route", "intersection": "intersection", "political": "political division", "country": "country","administrative_area_level_3": "minor civil division", "administrative_area_level_4": 'minor civil division', "administrative_area_level_5": "minor civil division", "colloquial_area": "country", "neighborhood": "neighborhood", "premise": "building", "subpremise": "building", "natural_feature": "natural feature", "airport": "airport", "park": "park", "point_of_interest": "point of interest"};
+
+    if (precision == "ROOFTOP"){
+        message = "Address match!";
+        $('#geocodeFeedback').html(message).css('color', 'green');
+        $('#geocodeFeedback').show();
+    } else {
+        message = "Approximate location! Center of " + componentMap[components[0].types[0]];
+        $('#geocodeFeedback').html(message).css('color', 'red');
+        $('#geocodeFeedback').show();
+    }
+    
+    
+}
+
+function addMarker(e){
+    //remove sidebar formatting
+
+    //remove old pushpin and previous selected district layers 
+    if (typeof pushPinMarker !== "undefined" ){ 
+        map.removeLayer(pushPinMarker);         
+    }
+    //add marker
+    pushPinMarker = new L.marker(e.latlng).addTo(map);
+}
+
+//submit search text box - removed button for formatting space
+function keypressInBox(e) {
+    var code = (e.keyCode ? e.keyCode : e.which);
+    if (code == 13) { //Enter keycode                        
+        e.preventDefault();
+        dataLayer.push({'event': 'enterKeyGeocode'});
+        geoCodeAddress(geocoder, map);
+    }
+};

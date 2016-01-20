@@ -18,6 +18,12 @@ $(function() {
   //load map layers
   init();
 
+  // both key and enter fire geoCodeAddress
+    $('#addressSearchButton').click(function(e){
+      e.preventDefault();
+      geoCodeAddress(geocoder, map);
+    })
+
   //Populate Search Select Boxes 
   // MAYBE PUT THIS INTO A FUNCITON IN APP AND STORE DATA IN AN OBJECT FOR LATER USE ON SELECTION 
   $.getJSON("php/getCounty.php",function(data){

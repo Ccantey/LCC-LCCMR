@@ -19,7 +19,7 @@
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,400italic,700' rel='stylesheet' type='text/css'>
-
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAQIoJxLHAWI1IW4sqtUtD8BrrLHja56ZQ" ></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <!-- <link href="../../assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet"> -->
 
@@ -62,10 +62,11 @@
 		            <li class="searchli "><a class="navtext" href="#">ID</a></li>
 		          </ul> -->
 		            <div class="searchform">
-						<form>
+						<form id='mainsearchform' onsubmit="geoCodeAddress()">
 						  <div class="form-group">
 						    <label for="addressSearch">Search by Address</label>
-						    <input type="email" class="form-control" id="addressSearch" placeholder="Address"><button id="addressSearchButton"type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
+						    <input type="text" class="form-control" id="addressSearch" placeholder="Address"><button id="addressSearchButton"type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
+						    <p id="geocodeFeedback"></p>
 						  </div>
 						 </form>
 					 </div>
