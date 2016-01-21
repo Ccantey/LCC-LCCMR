@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -6,25 +5,40 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="icon" href="images/favicon.ico">
-    <link href='https://api.mapbox.com/mapbox.js/v2.2.3/mapbox.css' rel='stylesheet' />
-    <link rel="stylesheet" href="https://raw.githubusercontent.com/Leaflet/Leaflet.markercluster/master/dist/MarkerCluster.css"/>
 
+    <!--Facebook Share customization open graph meta tags-->
+	<meta property="og:image" content="http://ww2.commissions.leg.state.mn.us/gis/iMaps/LCCMR-LA/images/enrtf-logo.jpg"/>
+	<meta property="og:title" content="LCCMR Land Acquisitions Map"/>
+	<meta property="og:author" content="Chris Cantey"/>
+	<meta property="og:description" content="Interactive mapping tool for Environment and Natural Resources Trust Fund funded fee title and conservation easement land acquisitions."/>
+	<meta property="og:url" content="http://ww2.commissions.leg.state.mn.us/gis/iMaps/LCCMR-LA/#"/>
+
+    <meta name="description" content="Interactive mapping tool for Environment and Natural Resources Trust Fund funded fee title and conservation easement land acquisitions.">
+	<meta name="author" content="Chris Cantey, LCC GIS">
+    
+    <!-- favicon and iPhone icon -->
+    <link rel="apple-touch-icon" href="http://ww2.commissions.leg.state.mn.us/gis/iMaps/LCCMR-LA/images/enrtf-logo.jpg">
+    <link rel="icon" href="images/favicon.ico">
+    
 
     <title>LCCMR</title>
 
-    <!-- Bootstrap core CSS -->
+    <!-- mapping stylesheets -->
+    <link href='https://api.mapbox.com/mapbox.js/v2.2.3/mapbox.css' rel='stylesheet' />
+    <link rel="stylesheet" href="css/MarkerCluster.css"/>
+
+    <!-- Bootstrap, fontawesome, google fonts core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,400italic,700' rel='stylesheet' type='text/css'>
+
+    <!-- Custom styles for this application -->
+    <link href="css/app.css" rel="stylesheet">
+
+    <!-- geocoding api -->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAQIoJxLHAWI1IW4sqtUtD8BrrLHja56ZQ" ></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <!-- <link href="../../assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet"> -->
-
-    <!-- Custom styles for this template -->
-    <link href="css/app.css" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -34,7 +48,6 @@
   </head>
 
   <body>
-
 
     <div class="container">
         <div class="row">
@@ -81,9 +94,9 @@
 							<select class="form-control locationzoom" id="hse2012_1">
                                <!-- Loaded in helper.js -->
 							</select>
-                                <!-- Loaded in helper.js -->
+                                
 							<select class="form-control locationzoom" id="sen2012">
-
+                               <!-- Loaded in helper.js -->
 							</select>
 
 
@@ -459,7 +472,7 @@
 						<h4 class="modal-title" id="myModalLabel">Share this map on social media!</h4>
 					</div>
 				<div class="modal-body">
-					<a id="FB" title="Share on Facebook" target="_blank" href="http://www.facebook.com/sharer.php?u=http%3A%2F%2Fyour.org/CityViewerLite/index.html">
+					<a id="FB" title="Share on Facebook" target="_blank" href="http://www.facebook.com/sharer.php?u=http%3A%2F%2Fwww.gis.leg/iMaps/LCCMR/landAcq">
 					<div id="facebookshare">										    
                             <i class="fa fa-facebook fa-lg fb"></i></span> 
 		                <strong>Share on Facebook</strong>

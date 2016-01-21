@@ -271,22 +271,25 @@ function toggleBaseLayers(el, gray, street, sat){
         map.removeLayer(gray);
         map.removeLayer(sat);
         map.addLayer(street);
-        $('#graylayeronoffswitch').prop('checked', true);
-        $('#satlayeronoffswitch').prop('checked', true);
+        $('#streetslayeronoffswitch').attr("disabled", true);
+        $('#graylayeronoffswitch').prop('checked', true).attr("disabled", false);
+        $('#satlayeronoffswitch').prop('checked', true).attr("disabled", false);
         break;
     case "graylayeronoffswitch":
         map.removeLayer(street);
         map.removeLayer(sat);
         map.addLayer(gray);
-        $('#streetslayeronoffswitch').prop('checked', true);
-        $('#satlayeronoffswitch').prop('checked', true);
+        $('#graylayeronoffswitch').attr("disabled", true);
+        $('#streetslayeronoffswitch').prop('checked', true).attr("disabled", false);
+        $('#satlayeronoffswitch').prop('checked', true).attr("disabled", false);
         break;
     case "satlayeronoffswitch":
         map.removeLayer(street);
         map.removeLayer(gray);
         map.addLayer(sat);
-        $('#streetslayeronoffswitch').prop('checked', true);
-        $('#graylayeronoffswitch').prop('checked', true)
+        $('#satlayeronoffswitch').attr("disabled", true);
+        $('#streetslayeronoffswitch').prop('checked', true).attr("disabled", false);
+        $('#graylayeronoffswitch').prop('checked', true).attr("disabled", false);
         break;
     }
     // if (el.is(':checked')){
@@ -372,6 +375,7 @@ function zoomToSelection(d, db) {
     $('.layernotification').hide()
     //parcel polygon overlay styling
     var myStyle = {
+        "clickable":false,
         "color": "#333",
         "weight": 2,
         "opacity": 0.65
