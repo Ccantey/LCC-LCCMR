@@ -571,60 +571,43 @@ table{
 
 /*------------------------------------------- media queries -----------------------------------------*/
 @media (max-width:414px){
-   .sidebar {
-      /* Firefox */
-        width: -moz-calc(100% - 48px);
-        /* WebKit */
-        width: -webkit-calc(100% - 48px);
-        /* Opera */
-        width: -o-calc(100% - 48px);
-        /* Standard */
-        width: calc(100% - 48px);
-
+  .sidebar {
+    /* Firefox */
+    width: -moz-calc(100% - 48px);
+    /* WebKit */
+    width: -webkit-calc(100% - 48px);
+    /* Opera */
+    width: -o-calc(100% - 48px);
+    /* Standard */
+    width: calc(100% - 48px);
   }  
-   .logo{
-      display:none;
-      /*margin-top:20px;*/
-      /*margin-left:24%;*/
-    }
-
+  .logo{
+    display:none;
+  }
+  .modal{
+    left: 16%;
+  }
+  .modal-dialog{
+    width:85%;
+  }
 }
 
 @media (max-height:414px){
-   .logo{
-      display:none;
-      /*margin-top:20px;*/
-      /*margin-left:24%;*/
-    }
-/*    .logo{
-      position:relative;
-      margin-top:150px;
-
-      margin-left:5%;
-    }  */
-/*  #layers > .logo, #results > .logo{
-      position:absolute;
-      left:24%;
-      bottom:10px;
-      padding-top:  10px;
-    } */
-}
-/*@media (min-width: 775px) {
-  .closetab{
+  .logo{
     display:none;
-  }
-}*/
-
-/*@media (min-width:414px) and (max-width: 775px) {
-  .sidebar {
-    left: -237px;
+    /*margin-top:20px;*/
+    /*margin-left:24%;*/
   }
 
+  .modal{
+    left: 16%;
+  }
 
-  .leaflet-left {
-    left: 50px; /*add media querries
+  .modal-dialog{
+      width:85%;
+  }
 }
-}*/
+
 
 
 

@@ -100,11 +100,11 @@ $(function() {
   	$( this ).addClass( "active" );
   });
   
-  $( "[data-layerlist-id]" ).click(function(){
-      // console.log($(this));
-     // addNotifications(this);
+  // $( "[data-layerlist-id]" ).click(function(){
+  //     // console.log($(this));
+  //    // addNotifications(this);
 
-  });
+  // });
 
   $('.first').click(function(){
     clearmap();
