@@ -89,8 +89,27 @@ table{
 .modal-dialog.help{
   width:85%;
 }
+/*.modal.fade .modal-dialog {
+  -webkit-transition: -webkit-transform 0.3s ease-out;
+     -moz-transition: -moz-transform 0.3s ease-out;
+       -o-transition: -o-transform 0.3s ease-out;
+          transition: transform 0.3s ease-out;
+}*/
 
+.modal-dialog {
+    width:59%;
+    min-width:  775px;
+}
+iframe{
+  height:300px;
+  width:500px;
+}
 
+.modal-body >ul{
+  position: absolute;
+  right:5px;
+  top:30px;
+}
 /*----------------------------------------------APPLICATION CSS----------------------------------------------------*/
 #facebookshare{
    background-color: #3b5998;
@@ -127,6 +146,55 @@ table{
     color: #428bca;
     padding-right: 15px;
     margin-top: 8px;
+}
+.legendTitle{
+  margin-top: 25px;
+}
+.symbolClass{
+  margin-left: -24px;
+}
+.symbolClass li{
+  display: inline;
+}
+#propsymbols{
+  height: 76px;
+  margin-top: 10px;
+  margin-left:10px;
+  width: 215px; 
+}
+.legendHelper{
+    color: #727d86;
+    font-size: 12px;
+    margin-left: 12px;
+    /*width: 129%;*/
+}
+.legendlabel{
+  margin-left: 10px;
+}
+#parcel{
+    background: #484995 none repeat scroll 0 0;
+    border: 2px solid #484995;
+    border-radius: 50%;
+    height: 12px;
+    margin-left: -16px;
+    margin-top: 8px;
+    position: absolute;
+    width: 12px;
+}
+.individualProp{
+  margin-top: 35px;
+    color: #727d86;
+    font-family: monospace;
+    font-weight: 700;
+    /*text-align: right;*/
+}
+.individualProp li{
+  display:inline;
+}
+.textExample{
+  font-family: "Open Sans",sans-serif;
+  font-style: italic;
+  font-weight: normal;
 }
 .sidebar {
     color:#fff;
@@ -461,12 +529,12 @@ table{
 
   .scale-1 {
     font-size: 15px;
-    height: 34px;
-    width: 34px;
+    height: 30px;
+    width: 30px;
     line-height: 28px;
     margin-top: -14px;
     margin-left: -14px;
-     padding-top: 	3px;
+     padding-top: 	1px;
   }
 
   .scale-1:before {
@@ -475,12 +543,12 @@ table{
 
   .scale-2 {
     font-size: 18px;
-    height: 48px;
-    width: 48px;
+    height: 43px;
+    width: 43px;
     line-height: 35px;
     margin-top: -17px;
     margin-left: -17px;
-    padding-top: 	7px;
+    padding-top: 	5px;
   }
 
   .scale-2:before {

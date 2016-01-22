@@ -295,13 +295,7 @@ function toggleBaseLayers(el, gray, street, sat){
         $('#graylayeronoffswitch').prop('checked', true).attr("disabled", false);
         break;
     }
-    // if (el.is(':checked')){
-    //     map.removeLayer(layer2);
-    //     map.addLayer(layer1);
-    // } else {
-    //     map.removeLayer(layer1);
-    //     map.addLayer(layer2);
-    // }
+
 }
 //fetch the overlay layers from WMS, published through FOSS mapserver (mapserver.org) - much faster than fetching large vector datasets through PGIS
 function getOverlayLayers(el, switchId){
