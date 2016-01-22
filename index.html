@@ -458,12 +458,13 @@
 			<span data-toggle="modal" data-target="#help" style="cursor:pointer">
 				<a href="#" class="middle" data-toggle="tooltip" data-placement="bottom" title="Help" id="helpbutton"><i class="fa fa-question-circle fa-lg"></i></a>
 			</span>
+			<a href="#"  id="legendToggle" data-toggle="tooltip" data-placement="bottom" title="Map Legend"><i class="fa fa-map-signs fa-lg"></i></a>
 			<span data-toggle="modal" data-target="#share" style="cursor:pointer">
 			    <a class="last" data-toggle="tooltip" data-placement="bottom" title="Share Map" id="sharebutton"><i class="fa fa-share fa-lg"></i></a>
 			</span>
 		</div>
 
-	 <div id="legend">
+	 <div id="legend" style="display:none;">
 	  <div class="legendTitle">Legend</div>
 	  <img id="propsymbols" src="images/legend/legend3.png"/>
 	  <ul class="symbolClass">
@@ -474,6 +475,7 @@
 		</ul>
 		<div class="legendlabel">Properties: Grouped by location</div>
 		<div class="legendHelper">* Actual count displayed in symbol *</div>
+		<!-- <hr> -->
 		<ul class="individualProp">
 		   <li><div id="parcel"></div> </li>
 		   <li>11-117-001</li>

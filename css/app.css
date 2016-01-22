@@ -149,14 +149,15 @@ iframe{
 }
 #legend{
    background-color: #142736;
-    bottom: 38px;
+    bottom: 20px;
     color: #fff;
     position: absolute;
-    right: 15px;
+    right: 0;
     z-index: 1001;
     padding:10px;
-    border-radius: 5px;
+    border-top-left-radius: 5px;
     border: 1px solid #101010;
+    max-height: 90%;
 }
 .legendTitle{
   margin-top: 25px;

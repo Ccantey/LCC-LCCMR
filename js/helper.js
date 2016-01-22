@@ -6,7 +6,7 @@ $(function() {
   $('.layernotification, #propertyinfo').hide();
   //activate tooltips
   $('[data-toggle="tooltip"]').tooltip();
-
+  // $('#legend').hide();
   //reset toggles if someone hits refresh
   $('#laonoffswitch,#sponoffswitch,#sflayeronoffswitch,#wmalayeronoffswitch,#wmdlayeronoffswitch,' +
      '#snalayeronoffswitch,#wmdlayeronoffswitch,#bwcalayeronoffswitch,#nflayeronoffswitch,#nwrlayeronoffswitch,#countylayeronoffswitch,' +
@@ -137,6 +137,9 @@ $(function() {
      //$('.leaflet-left').css('left', '50px');
       // $('.sidebar').animate({ 'left': '10px' }, 500, 'easeOutQuad');
   });
+  $('#legendToggle').click(function(){
+    $('#legend').toggle();
+  })
 
 
 });
