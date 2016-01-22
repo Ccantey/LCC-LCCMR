@@ -120,6 +120,8 @@ function init () {
 
 function showParcelTable (selection) {
     var html = "";
+    $('#propertyinfo').show();
+    $('#noshow').hide();
     $('#data').html(html);
     //console.log(selection);
     for (prop in selection.feature.properties) {
@@ -217,7 +219,8 @@ function navTab (id, tab) {
     }
 }
 function clearmap () {
-    
+    $('#propertyinfo').hide();
+    $('#noshow').show();
     $('#data').hide();	
 	map.fitBounds(bounds).setZoom(7);
 	toggleIcon(1);

@@ -83,8 +83,11 @@ table{
   color:#fff !important;
   cursor:pointer;
 }
-.modal-dialog{
+.modal-dialog.share{
   width:25%;
+}
+.modal-dialog.help{
+  width:85%;
 }
 
 
@@ -119,6 +122,11 @@ table{
 #FB:hover,#TW:hover{
   text-decoration:none;
   color:steelblue;
+}
+#facebookshare i, #twittershare i {
+    color: #428bca;
+    padding-right: 15px;
+    margin-top: 8px;
 }
 .sidebar {
     color:#fff;
@@ -297,6 +305,7 @@ table{
     position: absolute;
     margin-left: 13px;
     margin-top: -9px;
+    white-space: nowrap;
   }
 
   .layernotification{
@@ -587,7 +596,7 @@ table{
   .modal{
     left: 16%;
   }
-  .modal-dialog{
+  .modal-dialog.share{
     width:85%;
   }
 }
@@ -603,7 +612,7 @@ table{
     left: 16%;
   }
 
-  .modal-dialog{
+  .modal-dialog.share{
       width:85%;
   }
 }
