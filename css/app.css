@@ -84,7 +84,7 @@ table{
   cursor:pointer;
 }
 .modal-dialog.share{
-  width:25%;
+  width:400px;
 }
 .modal-dialog.help{
   width:85%;
@@ -98,7 +98,7 @@ table{
 
 .modal-dialog {
     width:59%;
-    min-width:  775px;
+    /*min-width:  775px;*/
 }
 iframe{
   height:300px;
@@ -112,18 +112,24 @@ iframe{
 }
 /*----------------------------------------------APPLICATION CSS----------------------------------------------------*/
 #facebookshare{
+   margin: 0 auto; 
    background-color: #3b5998;
    height:75px;
    color:#fff;
    text-align: center;
    padding-top: 25px;
+   min-width: 90px;
+   /*width:25%;*/
 }
 #twittershare{
+  margin: 0 auto; 
   background-color: #00aced;
   height:75px;
   color:#fff;
   text-align: center;
   padding-top: 25px;
+   min-width: 90px;
+   /*width:25%;*/
 }
 #facebookshare:hover{
   background-color: #4e69a2;
