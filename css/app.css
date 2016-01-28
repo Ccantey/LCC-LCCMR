@@ -475,6 +475,9 @@ iframe{
   height:34px;
   text-align: center;  
 }
+/*.helpli.active{
+  width:34%;
+}*/
 .searchul, .layersul, .helpul{
   width:100%;
   position:absolute;
@@ -484,7 +487,23 @@ iframe{
 }
 #help{
   margin-top:60px;
+  margin-left:-30px;
 }
+#help li{
+  margin-bottom:7px;
+}
+.helpListHeader{
+  list-style: none;
+  font-weight: bold;
+  color: #727d86;
+}
+.detailsText{
+  font-weight:normal;
+  font-style:italic;
+  font-size:12px;
+  color:#808080;
+}
+
 .rightline{
   border-right: 1px solid #727d86;
 }
