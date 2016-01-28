@@ -23,7 +23,7 @@ body {
   margin-top:-0;
 }
 
-li.searchli > a, li.layersli a{
+li.searchli > a, li.layersli a, li.helpli a{
   padding: 2px 0;
   line-height: 125%;
   height: 100%;
@@ -111,6 +111,13 @@ iframe{
   top:30px;
 }
 /*----------------------------------------------APPLICATION CSS----------------------------------------------------*/
+.aboutLCCMR{
+  margin-left: -25px;
+  font-size: 13px;
+}
+.aboutLCCMR ul{
+  list-style: none;
+}
 #facebookshare{
    margin: 0 auto; 
    background-color: #3b5998;
@@ -441,26 +448,29 @@ iframe{
   height:34px;
   text-align: center;
 }
-.active.searchli, .active.layersli{ 
+.active.searchli, .active.layersli,.active.helpli{ 
   background-color:#51616c;
 }
 
-.active.searchli >a, .active.layersli >a{ 
+.active.searchli >a, .active.layersli >a,.active.helpli >a{ 
   color:#fff;
 }
 
 
-.layersli{
+.layersli, .helpli{
   width:25%;
   height:34px;
   text-align: center;
 }
-.searchul, .layersul{
+.searchul, .layersul, .helpul{
   width:100%;
   position:absolute;
   left:0;
   border-top: 2px solid #727d86;
   border-bottom: 2px solid #727d86;
+}
+#help{
+  margin-top:60px;
 }
 .rightline{
   border-right: 1px solid #727d86;

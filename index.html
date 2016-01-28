@@ -43,7 +43,7 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-    
+
     <title>LCCMR</title>
   </head>
 
@@ -57,7 +57,7 @@
 	            <li class="navlist active" data-navlist-id="search"><a class="navtext"><i class="fa fa-search fa-lg"></i>Search</a> </a></li>
 	            <li class="navlist" data-navlist-id="layers"><a class="navtext"><i class="fa fa-map fa-lg"></i>Layers</a></li>
 	            <li class="navlist" data-navlist-id="results"><a class="navtext"><i class="fa fa-database fa-lg"></i>Results</a></li>
-	            <li class="navlist" data-navlist-id="lccmr"><a class="navtext"><i class="fa fa-home fa-2x"></i>LCCMR</a></li>
+	            <li class="navlist" data-navlist-id="lccmr"><a class="navtext"><i class="fa fa-question-circle fa-2x"></i> Help </a></li>
 	          </ul>
 	        </div>
 
@@ -429,17 +429,61 @@
             <!------------------------------------------- Sidebar/LCCMR Div ---------------------------------------------->
             <div id="lccmr" style="display: none">
             <div class='closetab'><i class="fa fa-caret-square-o-left fa-lg"></i></div>
-            	<div class="navtitle">About LCCMR</div>
+            	<div class="navtitle">Documentation</div>
+            	
+            	<ul class="nav navbar-nav helpul">
+			            <li class="active helpli rightline" data-helplist-id="mapNavHelp">
+			                <a class="navtext-layers" href="#"><div class="layernotification">1</div>Map Navigation</a>
+			            </li>
 
-            	<div class="aboutLCCMR">
-		            <p><strong><a href="http://www.lccmr.leg.mn/" target="_blank" style="color: #50667f;">Legislative-Citizen Commission on Minnesota Resources (LCCMR)</a></strong></p>
-		            <p>The function of the LCCMR is to make funding recommendations to the legislature for special environment and natural resource projects, primarily from the Environment and Natural Resources Trust Fund (ENRTF). These projects help maintain and enhance Minnesota's environment and natural resources.</p>
+			            <li class="helpli rightline" data-helplist-id="sidebarHelp">
+			                 <a class="navtext-layers" href="#"><div class="layernotification">1</div>Sidebar Navigation</a>
+			            </li>
 
-		            <p style="color: #7a7a7a;"><strong>Land Acquisitions Mapping Tool</strong></p>
+			            <li class="helpli rightline" data-helplist-id="mapToolsHelp"><a class="navtext-layers" href="#"><div class="layernotification">1</div>Map Tools</a></li>
 
-		            <p>Interactive mapping tool for Environment and Natural Resources Trust Fund funded fee title and conservation easement land acquisitions going back to calendar year 2005. The map can be used to locate parcels and get parcel details.</p>
+		          </ul>
 
-                </div>
+		            <div id="help">
+			          <!-- switches -->
+				      <div id="mapNavHelp"class="helpMenu">
+				      <ul>
+				      	<li class="helpListHeader">Basic map navigation</li>
+				      	<li>The red circle symbols size are proportional to the number of land acquisition properties found at the symbol location.</li>
+				      	<li>Select the symbols toad sfas dfasdfividual properties.</li>
+				      	<li>Selecting an inasdf  will result in a asdf asdf asdfsdfhe parcel geometry on the map and the property attributes in the sidebar navigation.</li>
+				      	<li>Select the LCCMRID link to display the full ENRTF report.</li>
+				      </ul>
+					  </div>
+					  <!-- <div class='layersswitchLabel'>Light Gray Basemap</div> -->
+		              <!-- END CITY SWITCH -->
+
+					  <div id="sidebarHelp"class="helpMenu">
+				      <ul>
+				      	<li class="helpListHeader">Basic map navigation</li>
+				      	<li>The red circle symbols size are proportional to the number of land acquisition properties found at the symbol location.</li>
+				      	<li>Select the symbols to filter down to individual properties.</li>
+				      	<li>Selecting an individual property will result in a display of the parcel geometry on the map and the property attributes in the sidebar navigation.</li>
+				      	<li>Select the LCCMRID link to display the full ENRTF report.</li>
+				      </ul>
+					  </div>
+					  <!-- <div class='layersswitchLabel'>Streets Basemap</div> -->
+		              <!-- END COUNTY SWITCH -->
+
+		              <div id="mapToolsHelp"class="helpMenu">
+				      <ul>
+				      	<li class="helpListHeader">Basic map navigation</li>
+				      	<li>asdfasdfn.</li>
+				      	<li>Seasdfasdfasdfasdfasdfas a asd fasdfasdf asdf sdvidual properties.</li>
+				      	<li>Selecasdf asdf asdf asdf asdf asdf ap and the property attributes in the sidebar navigation.</li>
+				      	<li>Select the LCCMRID link to display the full ENRTF report.</li>
+				      </ul>
+					  </div>
+					  <!-- <div class='layersswitchLabel'>Satellite Basemap</div> -->
+		              <!-- END COUNTY SWITCH -->
+
+		          </div>  <!-- END BASEMAP SWITCHES -->
+
                 <div class="logo">
 		          	<img src="images/enrtf-logo.png" height="75px"/>
 		        </div>
@@ -456,7 +500,7 @@
         <div id="map-tools">
 			<a href="#" class="first" data-toggle="tooltip" data-placement="bottom" title="Reset Map"><i class="fa fa-refresh fa-lg"></i></a>
 			<span data-toggle="modal" data-target="#help" style="cursor:pointer">
-				<a href="#" class="middle" data-toggle="tooltip" data-placement="bottom" title="Help" id="helpbutton"><i class="fa fa-question-circle fa-lg"></i></a>
+				<a href="#" class="middle" data-toggle="tooltip" data-placement="bottom" title="About" id="helpbutton"><i class="fa fa-info-circle fa-lg"></i></a>
 			</span>
 			<a href="#"  id="legendToggle" data-toggle="tooltip" data-placement="bottom" title="Map Legend"><i class="fa fa-map-signs fa-lg"></i></a>
 			<span data-toggle="modal" data-target="#share" style="cursor:pointer">
@@ -497,16 +541,25 @@
         <div class="modal-content">
             <div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-				<h4 class="modal-title" id="myModalLabel">Help Menu</h4>
+				<h4 class="modal-title" id="myModalLabel">About LCCMR</h4>
 			</div>
-            <div class="modal-body">
+			<div class="aboutLCCMR">
+		            <p><strong><a href="http://www.lccmr.leg.mn/" target="_blank" style="color: #50667f;">Legislative-Citizen Commission on Minnesota Resources (LCCMR)</a></strong></p>
+		            <p>The function of the LCCMR is to make funding recommendations to the legislature for special environment and natural resource projects, primarily from the Environment and Natural Resources Trust Fund (ENRTF). These projects help maintain and enhance Minnesota's environment and natural resources.</p>
+
+		            <p style="color: #7a7a7a;"><strong>Land Acquisitions Mapping Tool</strong></p>
+
+		            <p>Interactive mapping tool for Environment and Natural Resources Trust Fund funded fee title and conservation easement land acquisitions going back to calendar year 2005. The map can be used to locate parcels and get parcel details.</p>
+
+                </div>
+<!--             <div class="modal-body">
                 <iframe src="http://www.youtube.com/embed/Zrrp6-2M2aQ?html5=1"></iframe>
                 <ul>
                     <li> Basic Navigation</li>
                     <li> Search by Address</li>
                     <li> Search by County/Legislative District</li>
                 </ul>
-            </div>
+            </div> -->
         </div>
     </div>
 </div>

@@ -3,6 +3,7 @@ $(function() {
   //initial 'active' states
   // $("#layers, #results, #lccmr").hide();
   $("#physicalSwitches, #naturalSwitches, #basemap").hide();
+  $("#sidebarHelp, #mapToolsHelp").hide();
   $('.layernotification, #propertyinfo').hide();
   //activate tooltips
   $('[data-toggle="tooltip"]').tooltip();
@@ -98,6 +99,16 @@ $(function() {
   	$('#'+id).show();
     $("li.layersli").removeClass("active");
   	$( this ).addClass( "active" );
+  });
+
+  //map layers navigation
+  $('.helpli').click(function(e){
+    var id = $(this).data('helplist-id');
+    $("#mapNavHelp, #sidebarHelp, #mapToolsHelp").hide();
+    $('#'+id).show();
+    console.log($( this ))
+    $("li.helpli").removeClass("active");
+    $( this ).addClass( "active" );
   });
   
   // $( "[data-layerlist-id]" ).click(function(){
