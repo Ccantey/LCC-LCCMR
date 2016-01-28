@@ -251,7 +251,10 @@ iframe{
 /*sidebar tab navigation*/
 .nav.navbar-nav.layersul > .active > a,
 .nav.navbar-nav.layersul > .active > a:hover,
-.nav.navbar-nav.layersul > .active > a:focus {
+.nav.navbar-nav.layersul > .active > a:focus,
+.nav.navbar-nav.helpul > .active > a,
+.nav.navbar-nav.helpul > .active > a:hover,
+.nav.navbar-nav.helpul > .active > a:focus {
   color: #fff;
   background-color:#51616c;
   outline-color: #51616c;
@@ -288,6 +291,11 @@ iframe{
   color:#808080;
   font-size: 11px;
   padding: 6px 4px 4px 1px !important 
+}
+.navtext-help{
+  color:#808080;
+  font-size: 11px;
+  padding: 4px 4px 4px 1px !important 
 }
 
 .logo{
@@ -457,10 +465,15 @@ iframe{
 }
 
 
-.layersli, .helpli{
+.layersli{
   width:25%;
   height:34px;
   text-align: center;
+}
+.helpli{
+  width:33%;
+  height:34px;
+  text-align: center;  
 }
 .searchul, .layersul, .helpul{
   width:100%;
