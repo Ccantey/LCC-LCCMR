@@ -91,14 +91,14 @@ table{
   list-style: none;
 }
 #facebookshare{
-   margin: 0 auto; 
+   margin: 0 auto 5px; 
    background-color: #3b5998;
    height:75px;
    color:#fff;
    text-align: center;
    padding-top: 25px;
    min-width: 90px;
-   /*width:25%;*/
+   width:50%;
 }
 #twittershare{
   margin: 0 auto; 
@@ -108,7 +108,7 @@ table{
   text-align: center;
   padding-top: 25px;
    min-width: 90px;
-   /*width:25%;*/
+   width:50%;
 }
 #facebookshare:hover{
   background-color: #4e69a2;
