@@ -1,7 +1,7 @@
 ## Minnesota Legislative Coordinating Commission
 ### Legislative-Citizen Commission on Minnesota Resources (LCCMR) mapping application User Interface
 
-The **Land Acquisitions Map?** application is a completely open-source full-stack, responsive (RWD) application, built with PostGIS, Leaflet, and a little TLC.
+The **Land Acquisitions Map** application is a completely open-source full-stack, responsive (RWD) application, built with PostGIS, Leaflet, and a little TLC.
 
 See it in the wild at [http://gis.leg.mn/iMaps/LCCMR/landAcq](http://www.gis.leg.mn/iMaps/LCCMR/landAcq/)
 
@@ -24,5 +24,5 @@ See it in the wild at [http://gis.leg.mn/iMaps/LCCMR/landAcq](http://www.gis.leg
   - Graduated symbology
   - Add  overlay layers to geo-exploring
 
-The code relies on a connection to an instance of [PostGreSQL/PostGIS](http://www.postgresql.org/), a free and open-source spatial database. But for testing, connections can be made to the GeoJSON included in the data folder.
+The code relies on a connection to an instance of [PostGreSQL/PostGIS](http://www.postgresql.org/), a free and open-source spatial database. But for testing, connections can be made to the GeoJSON included in the data folder (see [Who Represents Me?](https://github.com/Ccantey/LCC-DistrictFinder/tree/master/data) for all data).
 
