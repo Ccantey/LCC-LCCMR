@@ -106,7 +106,7 @@ $(function() {
     var id = $(this).data('helplist-id');
     $("#mapNavHelp, #sidebarHelp, #mapToolsHelp").hide();
     $('#'+id).show();
-    console.log($( this ))
+    // console.log($( this ))
     $("li.helpli").removeClass("active");
     $( this ).addClass( "active" );
   });
@@ -130,7 +130,7 @@ $(function() {
     //console.log($(this), $(this).attr('id'));
 
         getOverlayLayers($(this), $(this).attr('id'));
-        console.log($(this));
+        // console.log($(this));
         var parents = $(this).parents();
         var mapLayersTab = parents.parents();
         //console.log(two[0].id)
@@ -152,5 +152,5 @@ $(function() {
     $('#legend').toggle();
   })
 
-
+  console.log("Welcome to the 'LCCMR Land Acquisitions' Mapping Application, developed by the MN State Legislative Coordinating Commission GIS. The application's responsive web design(RWD), open-source code can be found at 'https://github.com/Ccantey/LCC-LCCMR'.")
 });
