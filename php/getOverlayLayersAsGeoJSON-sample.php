@@ -4,8 +4,6 @@
 # Connect to PostgreSQL database
 $conn = new PDO('pgsql:host=####;dbname=####','####','####'); 
 
-$lat = $_GET['lat'];
-$long = $_GET['lng'];
 
 //Here is the complex SQL to return all legislators:
 //will have to do some phanagling to return appropriately formated data.
